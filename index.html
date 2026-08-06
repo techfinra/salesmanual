@@ -758,6 +758,30 @@ body {
   .case-step:not(:last-child) { border-right: none; border-bottom: 1px solid var(--line); }
 }
 
+/* ═══════════ 진행상황 스냅샷 대시보드 (완료/진행중/예정) ═══════════ */
+.status-dash{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:26px; }
+.sd-col{ border-radius:12px; padding:16px 18px; border:1.5px solid; }
+.sd-col.done{ background:#F0FDF4; border-color:#BBF7D0; }
+.sd-col.progress{ background:#FFFBEB; border-color:#FDE68A; }
+.sd-col.next{ background:#EFF6FF; border-color:#BFDBFE; }
+.sd-head{ display:flex; align-items:center; gap:8px; margin-bottom:13px; }
+.sd-dot{ width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+.sd-col.done .sd-dot{ background:#16A34A; }
+.sd-col.progress .sd-dot{ background:#D97706; }
+.sd-col.next .sd-dot{ background:#2563EB; }
+.sd-label{ font-size:11.5px; font-weight:800; letter-spacing:0.3px; }
+.sd-col.done .sd-label{ color:#15803D; }
+.sd-col.progress .sd-label{ color:#B45309; }
+.sd-col.next .sd-label{ color:#1D4ED8; }
+.sd-count{ margin-left:auto; font-size:10.5px; font-weight:800; background:#fff; padding:1px 8px; border-radius:10px; }
+.sd-col.done .sd-count{ color:#16A34A; }
+.sd-col.progress .sd-count{ color:#D97706; }
+.sd-col.next .sd-count{ color:#2563EB; }
+.sd-items{ display:flex; flex-direction:column; gap:9px; }
+.sd-item-title{ font-size:12.5px; font-weight:700; color:#1F2937; line-height:1.4; }
+.sd-item-date{ font-size:10.5px; color:#6B7280; margin-top:1px; }
+@media(max-width:900px){ .status-dash{ grid-template-columns:1fr; } }
+
 /* ═══════════ AUTH GATE ═══════════ */
 #auth-gate{
   position:fixed; inset:0; z-index:1000;
@@ -2425,13 +2449,32 @@ body {
         <p>테크핀 × KCB · 1차 실무협의체 2026.07.22 · 월 1회 정례</p>
       </div>
 
-      <!-- ① 핵심 한 줄 + 상태 칩 -->
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px;flex-wrap:wrap">
-        <span style="background:#1D4ED8;color:#fff;padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700">MOU 체결 완료</span>
-        <span style="background:#F0FDF4;color:#16A34A;border:1px solid #BBF7D0;padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700">전산개발 착수 준비</span>
-        <span style="background:#FEF9C3;color:#92400E;border:1px solid #FDE68A;padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700">KB국민카드 10월 OPEN 목표</span>
-        <span style="font-size:12.5px;color:var(--gray);margin-left:auto">코피티션 — KCB 채널 통해 카드사로 테크핀 데이터 확산</span>
+      <!-- ① 진행상황 스냅샷 대시보드 -->
+      <div class="status-dash">
+        <div class="sd-col done">
+          <div class="sd-head"><span class="sd-dot"></span><span class="sd-label">완료</span><span class="sd-count">3</span></div>
+          <div class="sd-items">
+            <div><div class="sd-item-title">MOU 체결</div><div class="sd-item-date">2026.07.07</div></div>
+            <div><div class="sd-item-title">1차 실무협의체</div><div class="sd-item-date">2026.07.22</div></div>
+            <div><div class="sd-item-title">신규사업 1차 Ideation 미팅</div><div class="sd-item-date">2026.08.05</div></div>
+          </div>
+        </div>
+        <div class="sd-col progress">
+          <div class="sd-head"><span class="sd-dot"></span><span class="sd-label">진행중</span><span class="sd-count">2</span></div>
+          <div class="sd-items">
+            <div><div class="sd-item-title">SCB매출정보 제공방식 협의</div><div class="sd-item-date">방안2(월Batch 양방향) 제안</div></div>
+            <div><div class="sd-item-title">카드사 락인 — KB국민카드</div><div class="sd-item-date">10월 OPEN 목표</div></div>
+          </div>
+        </div>
+        <div class="sd-col next">
+          <div class="sd-head"><span class="sd-dot"></span><span class="sd-label">예정</span><span class="sd-count">2</span></div>
+          <div class="sd-items">
+            <div><div class="sd-item-title">정기 실무협의체</div><div class="sd-item-date">8.11(화) 14:00</div></div>
+            <div><div class="sd-item-title">우선순위 확정 회의</div><div class="sd-item-date">다음 주 화요일</div></div>
+          </div>
+        </div>
       </div>
+      <div style="font-size:12.5px;color:var(--gray);margin-bottom:24px">코피티션 — KCB 채널 통해 카드사로 테크핀 데이터 확산</div>
 
       <!-- ② 협의체 조직도 SVG -->
       <div style="background:var(--white);border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:24px">
@@ -3290,13 +3333,31 @@ body {
         <p>테크핀 × NICE · 2차 실무협의체 2026.07.23 · MOU 체결 2026.06.15</p>
       </div>
 
-      <!-- 상태 칩 -->
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px;flex-wrap:wrap">
-        <span style="background:#E65100;color:#fff;padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700">MOU 체결 완료</span>
-        <span style="background:#EFF6FF;color:#1D4ED8;border:1px solid #BFDBFE;padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700">4개 분과 운영 중</span>
-        <span style="background:#F0FDF4;color:#16A34A;border:1px solid #BBF7D0;padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700">토스뱅크·케이뱅크 데이터 공급 중</span>
-        <span style="font-size:12.5px;color:var(--gray);margin-left:auto">NICE 채널 통해 테크핀 데이터 금융기관 확산</span>
+      <!-- 진행상황 스냅샷 대시보드 -->
+      <div class="status-dash">
+        <div class="sd-col done">
+          <div class="sd-head"><span class="sd-dot"></span><span class="sd-label">완료</span><span class="sd-count">2</span></div>
+          <div class="sd-items">
+            <div><div class="sd-item-title">MOU 체결</div><div class="sd-item-date">2026.06.15</div></div>
+            <div><div class="sd-item-title">2차 실무협의체</div><div class="sd-item-date">2026.07.23</div></div>
+          </div>
+        </div>
+        <div class="sd-col progress">
+          <div class="sd-head"><span class="sd-dot"></span><span class="sd-label">진행중</span><span class="sd-count">2</span></div>
+          <div class="sd-items">
+            <div><div class="sd-item-title">4개 분과 운영</div><div class="sd-item-date">컨설팅·데이터·정책제휴·신규서비스</div></div>
+            <div><div class="sd-item-title">토스뱅크·케이뱅크 데이터 공급</div><div class="sd-item-date">NICE 채널 통해 진행 중</div></div>
+          </div>
+        </div>
+        <div class="sd-col next">
+          <div class="sd-head"><span class="sd-dot"></span><span class="sd-label">예정</span><span class="sd-count">2</span></div>
+          <div class="sd-items">
+            <div><div class="sd-item-title">제3차 실무협의체 + 워크숍</div><div class="sd-item-date">8월 중</div></div>
+            <div><div class="sd-item-title">분과별 담당자 지정</div><div class="sd-item-date">워크숍 이전</div></div>
+          </div>
+        </div>
       </div>
+      <div style="font-size:12.5px;color:var(--gray);margin-bottom:24px">NICE 채널 통해 테크핀 데이터 금융기관 확산</div>
 
       <!-- ① 조직도 -->
       <div style="background:var(--white);border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:24px">
