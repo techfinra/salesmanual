@@ -784,22 +784,20 @@ body {
 .sd-item-date{ font-size:10.5px; color:#6B7280; margin-top:1px; }
 @media(max-width:900px){ .status-dash{ grid-template-columns:1fr; } }
 
-/* 편집모드일 때만 노출되는 추가/삭제 컨트롤 */
+/* 완료/진행중/예정 카드의 추가·삭제 컨트롤은 수정모드와 무관하게 항상 노출 */
 .sd-del-btn{
-  display:none; flex-shrink:0; width:18px; height:18px; border-radius:50%;
+  display:flex; flex-shrink:0; width:18px; height:18px; border-radius:50%;
   background:#fff; border:1px solid #E5E7EB; color:#9CA3AF; font-size:11px; font-weight:700;
   align-items:center; justify-content:center; cursor:pointer; line-height:1; padding:0;
 }
 .sd-del-btn:hover{ background:#FEE2E2; border-color:#FCA5A5; color:#DC2626; }
-.editable-zone[contenteditable="true"] .sd-del-btn{ display:flex; }
 
 .sd-add-btn{
-  display:none; margin-top:10px; width:100%; padding:7px 0; border-radius:8px;
+  display:block; margin-top:10px; width:100%; padding:7px 0; border-radius:8px;
   border:1.5px dashed #CBD5E1; background:transparent; color:#6B7280; font-size:11.5px; font-weight:700;
   cursor:pointer; font-family:inherit; text-align:center;
 }
 .sd-add-btn:hover{ border-color:#94A3B8; color:#374151; background:rgba(255,255,255,0.5); }
-.editable-zone[contenteditable="true"] .sd-add-btn{ display:block; }
 
 .sd-add-form{ margin-top:10px; background:#fff; border:1.5px solid #CBD5E1; border-radius:9px; padding:10px; }
 .sd-add-form input{
@@ -5366,7 +5364,7 @@ const SECURITY_CODE = "techfin2026"; // 회원가입 시 필요한 회사 보안
    이 버전보다 "이전" 버전 기준으로 저장된 Firestore 수정본은
    자동으로 무시되고, 방금 배포한 최신 정적 내용이 우선 표시됩니다.
    ──────────────────────────────────────────── */
-const MANUAL_BUILD_VERSION = "2026-08-06T14:36:00+09:00";
+const MANUAL_BUILD_VERSION = "2026-08-06T14:43:00+09:00";
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -5553,6 +5551,8 @@ window.sdConfirmAdd = function(btn){
   detailInput.value = '';
   form.style.display = 'none';
   form.previousElementSibling.style.display = 'block';
+
+  sdAutoSave(col);
 };
 
 window.sdDeleteItem = function(btn){
@@ -5560,12 +5560,32 @@ window.sdDeleteItem = function(btn){
   const col = item.closest('.sd-col');
   item.remove();
   sdUpdateCount(col);
+  sdAutoSave(col);
 };
 
 function sdUpdateCount(col){
   const count = col.querySelectorAll('.sd-item-wrap').length;
   const countEl = col.querySelector('.sd-count');
   if (countEl) countEl.textContent = count;
+}
+
+/* 대시보드 항목 추가·삭제는 수정모드와 무관하게 즉시 Firestore에 자동저장 */
+function sdAutoSave(col){
+  const section = col.closest('.page-section');
+  if (!section || !section.id) return;
+  const secId = section.id;
+  const status = document.getElementById('status-' + secId);
+  if (status) { status.style.color = '#D97706'; status.textContent = '저장 중...'; }
+
+  saveEditableSectionToFirestore(secId).then(() => {
+    if (status) {
+      status.style.color = '#16A34A';
+      status.textContent = '✅ 자동 저장됨';
+      setTimeout(() => { status.textContent = ''; }, 2500);
+    }
+  }).catch((err) => {
+    if (status) { status.style.color = '#DC2626'; status.textContent = '저장 실패: ' + err.message; }
+  });
 }
 
 window.toggleEditSection = function(secId){
