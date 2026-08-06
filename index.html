@@ -748,14 +748,64 @@ body {
 
 .hl-blue { background:#EFF6FF;color:#1D4ED8;font-weight:600; }
 
+/* ─── MOBILE HAMBURGER + OVERLAY ─── */
+#mobile-menu-btn{
+  display:none; position:fixed; top:12px; left:12px; z-index:200;
+  width:40px; height:40px; border-radius:10px; border:none;
+  background:var(--navy); color:#fff; font-size:18px; cursor:pointer;
+  align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(0,0,0,0.2);
+}
+#sidebar-overlay{
+  display:none; position:fixed; inset:0; background:rgba(0,0,0,0.45); z-index:99;
+}
+#sidebar-overlay.show{ display:block; }
+
 /* ─── RESPONSIVE ─── */
 @media (max-width: 768px) {
-  .sidebar { display: none; }
+  #mobile-menu-btn{ display:flex; }
+
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform .25s ease;
+    width: 78vw; max-width: 300px;
+  }
+  .sidebar.open{ transform: translateX(0); }
+
   .main { margin-left: 0; }
-  .content { padding: 20px 16px; }
+  .topbar{ padding-left:60px; }
+  .content { padding: 20px 14px; }
+
   .case-flow { flex-direction: column; }
   .case-step:not(:last-child)::after { display: none; }
   .case-step:not(:last-child) { border-right: none; border-bottom: 1px solid var(--line); }
+
+  /* 인라인 grid-template-columns로 짜여진 카드형 레이아웃 전체를 1열로 강제 전환 */
+  [style*="grid-template-columns:repeat(2"],
+  [style*="grid-template-columns:repeat(3"],
+  [style*="grid-template-columns:repeat(4"],
+  [style*="grid-template-columns:1fr 1fr"],
+  [style*="grid-template-columns: 1fr 1fr"],
+  [style*="grid-template-columns:1fr auto 1fr"],
+  [style*="grid-template-columns:130px repeat"],
+  [style*="grid-template-columns:110px 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* 표는 컨테이너 안에서 가로 스크롤 (JS가 감싸는 .table-scroll 대상) */
+  .table-scroll{ overflow-x:auto; -webkit-overflow-scrolling:touch; margin-bottom:16px; }
+  .table-scroll table{ min-width:640px; }
+
+  /* 조직도 등 SVG 다이어그램은 가로 스크롤 (JS가 감싸는 .svg-scroll 대상) */
+  .svg-scroll{ overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  .svg-scroll svg{ min-width:700px; width:700px !important; }
+
+  /* 터치 영역 확보 */
+  .nav-item{ padding-top:12px; padding-bottom:12px; }
+  .edit-btn, .sd-add-btn, .logout-btn, .auth-submit{ min-height:40px; }
+
+  /* 세일즈 매뉴얼 6단계 플로우 등 가로 스텝은 세로로 */
+  #sm-flow{ flex-direction:column; }
+  .sm-arrow{ transform:rotate(90deg); padding:6px 0; }
 }
 
 /* ═══════════ 진행상황 스냅샷 대시보드 (완료/진행중/예정) ═══════════ */
@@ -961,10 +1011,14 @@ body {
   <div class="toc-head">이 페이지 목차</div>
   <div class="toc-list" id="page-toc-list"></div>
 </div>
+
+<button id="mobile-menu-btn" onclick="toggleMobileSidebar()">☰</button>
+<div id="sidebar-overlay" onclick="closeMobileSidebar()"></div>
+
 <div class="layout">
 
 <!-- ─── SIDEBAR ─── -->
-<nav class="sidebar">
+<nav class="sidebar" id="sidebar">
   <div class="sidebar-logo">
     <div class="brand">❙ TechFin <span>ratings</span></div>
     <div class="sub">Sales Manual · v2.0</div>
@@ -5361,6 +5415,38 @@ function showSection(id) {
   document.getElementById('topbar-title').textContent = pageTitles[id] || id;
   window.scrollTo(0, 0);
   updatePageTOC(id);
+  closeMobileSidebar();
+  wrapResponsiveElements(id);
+}
+
+/* ─── 모바일 슬라이드 사이드바 ─── */
+function toggleMobileSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('sidebar-overlay').classList.toggle('show');
+}
+function closeMobileSidebar() {
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('sidebar-overlay').classList.remove('show');
+}
+
+/* ─── 표·SVG 조직도를 가로 스크롤 컨테이너로 자동 래핑 (모바일 대응) ─── */
+function wrapResponsiveElements(secId) {
+  const section = document.getElementById(secId);
+  if (!section) return;
+  section.querySelectorAll('table.tf-table, table.layout-table, table.cps-var-table').forEach(table => {
+    if (table.parentElement.classList.contains('table-scroll')) return;
+    const wrap = document.createElement('div');
+    wrap.className = 'table-scroll';
+    table.parentNode.insertBefore(wrap, table);
+    wrap.appendChild(table);
+  });
+  section.querySelectorAll('svg').forEach(svg => {
+    if (svg.parentElement.classList.contains('svg-scroll')) return;
+    const wrap = document.createElement('div');
+    wrap.className = 'svg-scroll';
+    svg.parentNode.insertBefore(wrap, svg);
+    wrap.appendChild(svg);
+  });
 }
 
 /* ═══════════════════════════════════════════
@@ -5713,7 +5799,7 @@ const SECURITY_CODE = "techfin2026"; // 회원가입 시 필요한 회사 보안
    이 버전보다 "이전" 버전 기준으로 저장된 Firestore 수정본은
    자동으로 무시되고, 방금 배포한 최신 정적 내용이 우선 표시됩니다.
    ──────────────────────────────────────────── */
-const MANUAL_BUILD_VERSION = "2026-08-06T18:55:00+09:00";
+const MANUAL_BUILD_VERSION = "2026-08-07T08:23:00+09:00";
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -5801,6 +5887,7 @@ onAuthStateChanged(auth, (user) => {
     const label = document.getElementById('current-user-label');
     if (label) label.textContent = (user.displayName || user.email);
     loadAllEditableContent();
+    if (typeof wrapResponsiveElements === 'function') wrapResponsiveElements('home');
   } else {
     gate.style.display = 'flex';
     root.style.display = 'none';
