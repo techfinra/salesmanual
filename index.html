@@ -813,6 +813,29 @@ body {
 .sd-add-confirm{ background:var(--navy); color:#fff; }
 .sd-add-cancel{ background:#F1F5F9; color:#374151; }
 
+/* ═══════════ 우측 페이지 목차 패널 (KCB/NICE 전용) ═══════════ */
+#page-toc{
+  position:fixed; right:24px; top:50%; transform:translateY(-50%);
+  width:200px; max-height:60vh; z-index:60;
+  background:#fff; border:1px solid var(--line); border-radius:12px;
+  box-shadow:0 8px 28px rgba(13,31,78,0.12);
+  display:none; flex-direction:column; overflow:hidden;
+}
+#page-toc .toc-head{
+  padding:12px 16px 10px; font-size:10.5px; font-weight:800; letter-spacing:1px;
+  color:var(--gray); border-bottom:1px solid var(--line); text-transform:uppercase;
+}
+#page-toc .toc-list{ overflow-y:auto; padding:8px; display:flex; flex-direction:column; gap:3px; }
+#page-toc .toc-item{
+  display:flex; align-items:flex-start; gap:8px; padding:8px 10px; border-radius:8px;
+  font-size:12px; color:#374151; cursor:pointer; line-height:1.4; text-align:left;
+  border:none; background:transparent; width:100%; font-family:inherit;
+}
+#page-toc .toc-item:hover{ background:#F1F5F9; color:var(--navy); }
+#page-toc .toc-item.active{ background:var(--navy); color:#fff; font-weight:700; }
+#page-toc .toc-dot{ width:5px; height:5px; border-radius:50%; background:currentColor; opacity:0.5; flex-shrink:0; margin-top:5px; }
+@media(max-width:1280px){ #page-toc{ display:none !important; } }
+
 /* ═══════════ AUTH GATE ═══════════ */
 #auth-gate{
   position:fixed; inset:0; z-index:1000;
@@ -932,6 +955,11 @@ body {
 
 <!-- ═══════════ APP ROOT (로그인 후 노출) ═══════════ -->
 <div id="app-root">
+
+<div id="page-toc">
+  <div class="toc-head">이 페이지 목차</div>
+  <div class="toc-list" id="page-toc-list"></div>
+</div>
 <div class="layout">
 
 <!-- ─── SIDEBAR ─── -->
@@ -2757,7 +2785,7 @@ body {
       </div>
 
       <!-- ══════════ 1차 신규사업 Ideation 미팅 준비 ══════════ -->
-      <div style="margin-top:36px;padding-top:24px;border-top:2px dashed var(--line)">
+      <div id="kcb-toc-ideation" style="margin-top:36px;padding-top:24px;border-top:2px dashed var(--line)">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
           <span style="background:#16A34A;color:#fff;padding:3px 10px;border-radius:12px;font-size:10.5px;font-weight:700">✓ 완료 (2026.08.05)</span>
           <h2 style="font-size:16px;font-weight:800;color:var(--navy);margin:0">KCB 신규사업 1차 Ideation 미팅 준비자료</h2>
@@ -3279,7 +3307,7 @@ body {
       </div>
 
       <!-- ══════════ 1차 실무협의체 회의 결과 (2026.08.05 실제 진행) ══════════ -->
-      <div style="margin-top:36px;padding-top:24px;border-top:2px dashed var(--line)">
+      <div id="kcb-toc-meeting-result" style="margin-top:36px;padding-top:24px;border-top:2px dashed var(--line)">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
           <span style="background:#16A34A;color:#fff;padding:3px 10px;border-radius:12px;font-size:10.5px;font-weight:700">✓ 미팅 완료</span>
           <h2 style="font-size:16px;font-weight:800;color:var(--navy);margin:0">1차 실무협의체 회의 결과</h2>
@@ -3384,7 +3412,7 @@ body {
       </div>
 
       <!-- ══════════ 코피티션 BM별 하위계약 조건 사전 검토 ══════════ -->
-      <div style="margin-top:36px;padding-top:24px;border-top:2px dashed var(--line)">
+      <div id="kcb-toc-bm-contract" style="margin-top:36px;padding-top:24px;border-top:2px dashed var(--line)">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
           <span style="background:#7C3AED;color:#fff;padding:3px 10px;border-radius:12px;font-size:10.5px;font-weight:700">검토 요청 중</span>
           <h2 style="font-size:16px;font-weight:800;color:var(--navy);margin:0">코피티션 BM별 하위계약 조건 사전 검토</h2>
@@ -3875,7 +3903,7 @@ body {
       </div>
 
       <!-- ══════════ 워크숍 사전 분과별 협의 안건 (8/19 이전) ══════════ -->
-      <div style="margin-top:36px;padding-top:24px;border-top:2px dashed var(--line)">
+      <div id="nice-toc-workshop" style="margin-top:36px;padding-top:24px;border-top:2px dashed var(--line)">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
           <span style="background:#DC2626;color:#fff;padding:3px 10px;border-radius:12px;font-size:10.5px;font-weight:700">일정 확정 필요</span>
           <h2 style="font-size:16px;font-weight:800;color:var(--navy);margin:0">워크숍(8/19) 사전 분과별 협의 안건</h2>
@@ -5331,7 +5359,71 @@ function showSection(id) {
   document.querySelector(`[onclick="showSection('${id}')"]`).classList.add('active');
   document.getElementById('topbar-title').textContent = pageTitles[id] || id;
   window.scrollTo(0, 0);
+  updatePageTOC(id);
 }
+
+/* ═══════════════════════════════════════════
+   우측 페이지 목차 (KCB · NICE 전용)
+   ═══════════════════════════════════════════ */
+const TOC_ENABLED_SECTIONS = ['copetition-kcb', 'copetition-nice'];
+
+function updatePageTOC(secId) {
+  const panel = document.getElementById('page-toc');
+  const list = document.getElementById('page-toc-list');
+
+  if (!TOC_ENABLED_SECTIONS.includes(secId)) {
+    panel.style.display = 'none';
+    return;
+  }
+
+  const section = document.getElementById(secId);
+  // "덩어리 섹션" = 점선 구분선(border-top dashed)으로 나뉜 블록만 목차 대상
+  const blocks = Array.from(section.querySelectorAll(':scope > div[style*="dashed"]'));
+
+  if (blocks.length === 0) {
+    panel.style.display = 'none';
+    return;
+  }
+
+  list.innerHTML = '';
+  blocks.forEach((block, idx) => {
+    if (!block.id) block.id = secId + '-toc-auto-' + idx;
+    const h2 = block.querySelector('h2');
+    const label = h2 ? h2.textContent.trim() : ('섹션 ' + (idx + 1));
+
+    const item = document.createElement('button');
+    item.className = 'toc-item';
+    item.dataset.target = block.id;
+    item.innerHTML = `<span class="toc-dot"></span><span>${label}</span>`;
+    item.onclick = () => {
+      document.getElementById(block.id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+    list.appendChild(item);
+  });
+
+  panel.style.display = 'flex';
+  highlightActiveTOC();
+}
+
+function highlightActiveTOC() {
+  const panel = document.getElementById('page-toc');
+  if (!panel || panel.style.display === 'none') return;
+  const items = panel.querySelectorAll('.toc-item');
+  if (!items.length) return;
+
+  let currentId = null;
+  items.forEach(item => {
+    const target = document.getElementById(item.dataset.target);
+    if (target && target.getBoundingClientRect().top <= 140) {
+      currentId = item.dataset.target;
+    }
+  });
+  items.forEach(item => {
+    item.classList.toggle('active', item.dataset.target === currentId);
+  });
+}
+
+window.addEventListener('scroll', () => { highlightActiveTOC(); }, { passive: true });
 
 /* ════════════════════════════════════
    CPS 491 VARIABLE CATALOGUE
@@ -5616,7 +5708,7 @@ const SECURITY_CODE = "techfin2026"; // 회원가입 시 필요한 회사 보안
    이 버전보다 "이전" 버전 기준으로 저장된 Firestore 수정본은
    자동으로 무시되고, 방금 배포한 최신 정적 내용이 우선 표시됩니다.
    ──────────────────────────────────────────── */
-const MANUAL_BUILD_VERSION = "2026-08-06T16:09:30+09:00";
+const MANUAL_BUILD_VERSION = "2026-08-06T16:22:00+09:00";
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
