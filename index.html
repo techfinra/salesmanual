@@ -815,8 +815,8 @@ body {
 
 /* ═══════════ 우측 페이지 목차 패널 (KCB/NICE 전용) ═══════════ */
 #page-toc{
-  position:fixed; right:24px; top:50%; transform:translateY(-50%);
-  width:200px; max-height:60vh; z-index:60;
+  position:fixed; right:24px; top:104px;
+  width:200px; max-height:calc(100vh - 140px); z-index:60;
   background:#fff; border:1px solid var(--line); border-radius:12px;
   box-shadow:0 8px 28px rgba(13,31,78,0.12);
   display:none; flex-direction:column; overflow:hidden;
@@ -5708,7 +5708,7 @@ const SECURITY_CODE = "techfin2026"; // 회원가입 시 필요한 회사 보안
    이 버전보다 "이전" 버전 기준으로 저장된 Firestore 수정본은
    자동으로 무시되고, 방금 배포한 최신 정적 내용이 우선 표시됩니다.
    ──────────────────────────────────────────── */
-const MANUAL_BUILD_VERSION = "2026-08-06T16:22:00+09:00";
+const MANUAL_BUILD_VERSION = "2026-08-06T16:31:00+09:00";
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
