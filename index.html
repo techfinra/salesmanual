@@ -778,9 +778,42 @@ body {
 .sd-col.progress .sd-count{ color:#D97706; }
 .sd-col.next .sd-count{ color:#2563EB; }
 .sd-items{ display:flex; flex-direction:column; gap:9px; }
+.sd-item-wrap{ display:flex; align-items:flex-start; gap:6px; }
+.sd-item-body{ flex:1; min-width:0; }
 .sd-item-title{ font-size:12.5px; font-weight:700; color:#1F2937; line-height:1.4; }
 .sd-item-date{ font-size:10.5px; color:#6B7280; margin-top:1px; }
 @media(max-width:900px){ .status-dash{ grid-template-columns:1fr; } }
+
+/* 편집모드일 때만 노출되는 추가/삭제 컨트롤 */
+.sd-del-btn{
+  display:none; flex-shrink:0; width:18px; height:18px; border-radius:50%;
+  background:#fff; border:1px solid #E5E7EB; color:#9CA3AF; font-size:11px; font-weight:700;
+  align-items:center; justify-content:center; cursor:pointer; line-height:1; padding:0;
+}
+.sd-del-btn:hover{ background:#FEE2E2; border-color:#FCA5A5; color:#DC2626; }
+.editable-zone[contenteditable="true"] .sd-del-btn{ display:flex; }
+
+.sd-add-btn{
+  display:none; margin-top:10px; width:100%; padding:7px 0; border-radius:8px;
+  border:1.5px dashed #CBD5E1; background:transparent; color:#6B7280; font-size:11.5px; font-weight:700;
+  cursor:pointer; font-family:inherit; text-align:center;
+}
+.sd-add-btn:hover{ border-color:#94A3B8; color:#374151; background:rgba(255,255,255,0.5); }
+.editable-zone[contenteditable="true"] .sd-add-btn{ display:block; }
+
+.sd-add-form{ margin-top:10px; background:#fff; border:1.5px solid #CBD5E1; border-radius:9px; padding:10px; }
+.sd-add-form input{
+  width:100%; box-sizing:border-box; padding:7px 9px; margin-bottom:6px; border:1px solid #E5E7EB;
+  border-radius:6px; font-size:12px; font-family:inherit; outline:none;
+}
+.sd-add-form input:focus{ border-color:#93C5FD; }
+.sd-add-form-btns{ display:flex; gap:6px; margin-top:4px; }
+.sd-add-form-btns button{
+  flex:1; padding:6px 0; border-radius:6px; border:none; font-size:11.5px; font-weight:700;
+  cursor:pointer; font-family:inherit;
+}
+.sd-add-confirm{ background:var(--navy); color:#fff; }
+.sd-add-cancel{ background:#F1F5F9; color:#374151; }
 
 /* ═══════════ AUTH GATE ═══════════ */
 #auth-gate{
@@ -2454,23 +2487,50 @@ body {
         <div class="sd-col done">
           <div class="sd-head"><span class="sd-dot"></span><span class="sd-label">완료</span><span class="sd-count">3</span></div>
           <div class="sd-items">
-            <div><div class="sd-item-title">MOU 체결</div><div class="sd-item-date">2026.07.07</div></div>
-            <div><div class="sd-item-title">1차 실무협의체</div><div class="sd-item-date">2026.07.22</div></div>
-            <div><div class="sd-item-title">신규사업 1차 Ideation 미팅</div><div class="sd-item-date">2026.08.05</div></div>
+            <div class="sd-item-wrap"><div class="sd-item-body"><div class="sd-item-title">MOU 체결</div><div class="sd-item-date">2026.07.07</div></div><button class="sd-del-btn" contenteditable="false" onclick="sdDeleteItem(this)">✕</button></div>
+            <div class="sd-item-wrap"><div class="sd-item-body"><div class="sd-item-title">1차 실무협의체</div><div class="sd-item-date">2026.07.22</div></div><button class="sd-del-btn" contenteditable="false" onclick="sdDeleteItem(this)">✕</button></div>
+            <div class="sd-item-wrap"><div class="sd-item-body"><div class="sd-item-title">신규사업 1차 Ideation 미팅</div><div class="sd-item-date">2026.08.05</div></div><button class="sd-del-btn" contenteditable="false" onclick="sdDeleteItem(this)">✕</button></div>
+          </div>
+          <button class="sd-add-btn" contenteditable="false" onclick="sdShowAddForm(this)">+ 항목 추가</button>
+          <div class="sd-add-form" contenteditable="false" style="display:none">
+            <input type="text" class="sd-add-title" placeholder="제목 (예: KB국민카드 계약 체결)">
+            <input type="text" class="sd-add-detail" placeholder="상세 내역 (예: 2026.09.01)">
+            <div class="sd-add-form-btns">
+              <button class="sd-add-confirm" onclick="sdConfirmAdd(this)">추가</button>
+              <button class="sd-add-cancel" onclick="sdCancelAdd(this)">취소</button>
+            </div>
           </div>
         </div>
         <div class="sd-col progress">
           <div class="sd-head"><span class="sd-dot"></span><span class="sd-label">진행중</span><span class="sd-count">2</span></div>
           <div class="sd-items">
-            <div><div class="sd-item-title">SCB매출정보 제공방식 협의</div><div class="sd-item-date">방안2(월Batch 양방향) 제안</div></div>
-            <div><div class="sd-item-title">카드사 락인 — KB국민카드</div><div class="sd-item-date">10월 OPEN 목표</div></div>
+            <div class="sd-item-wrap"><div class="sd-item-body"><div class="sd-item-title">SCB매출정보 제공방식 협의</div><div class="sd-item-date">방안2(월Batch 양방향) 제안</div></div><button class="sd-del-btn" contenteditable="false" onclick="sdDeleteItem(this)">✕</button></div>
+            <div class="sd-item-wrap"><div class="sd-item-body"><div class="sd-item-title">카드사 락인 — KB국민카드</div><div class="sd-item-date">10월 OPEN 목표</div></div><button class="sd-del-btn" contenteditable="false" onclick="sdDeleteItem(this)">✕</button></div>
+          </div>
+          <button class="sd-add-btn" contenteditable="false" onclick="sdShowAddForm(this)">+ 항목 추가</button>
+          <div class="sd-add-form" contenteditable="false" style="display:none">
+            <input type="text" class="sd-add-title" placeholder="제목">
+            <input type="text" class="sd-add-detail" placeholder="상세 내역">
+            <div class="sd-add-form-btns">
+              <button class="sd-add-confirm" onclick="sdConfirmAdd(this)">추가</button>
+              <button class="sd-add-cancel" onclick="sdCancelAdd(this)">취소</button>
+            </div>
           </div>
         </div>
         <div class="sd-col next">
           <div class="sd-head"><span class="sd-dot"></span><span class="sd-label">예정</span><span class="sd-count">2</span></div>
           <div class="sd-items">
-            <div><div class="sd-item-title">정기 실무협의체</div><div class="sd-item-date">8.11(화) 14:00</div></div>
-            <div><div class="sd-item-title">우선순위 확정 회의</div><div class="sd-item-date">다음 주 화요일</div></div>
+            <div class="sd-item-wrap"><div class="sd-item-body"><div class="sd-item-title">정기 실무협의체</div><div class="sd-item-date">8.11(화) 14:00</div></div><button class="sd-del-btn" contenteditable="false" onclick="sdDeleteItem(this)">✕</button></div>
+            <div class="sd-item-wrap"><div class="sd-item-body"><div class="sd-item-title">우선순위 확정 회의</div><div class="sd-item-date">다음 주 화요일</div></div><button class="sd-del-btn" contenteditable="false" onclick="sdDeleteItem(this)">✕</button></div>
+          </div>
+          <button class="sd-add-btn" contenteditable="false" onclick="sdShowAddForm(this)">+ 항목 추가</button>
+          <div class="sd-add-form" contenteditable="false" style="display:none">
+            <input type="text" class="sd-add-title" placeholder="제목">
+            <input type="text" class="sd-add-detail" placeholder="상세 내역">
+            <div class="sd-add-form-btns">
+              <button class="sd-add-confirm" onclick="sdConfirmAdd(this)">추가</button>
+              <button class="sd-add-cancel" onclick="sdCancelAdd(this)">취소</button>
+            </div>
           </div>
         </div>
       </div>
@@ -3338,22 +3398,49 @@ body {
         <div class="sd-col done">
           <div class="sd-head"><span class="sd-dot"></span><span class="sd-label">완료</span><span class="sd-count">2</span></div>
           <div class="sd-items">
-            <div><div class="sd-item-title">MOU 체결</div><div class="sd-item-date">2026.06.15</div></div>
-            <div><div class="sd-item-title">2차 실무협의체</div><div class="sd-item-date">2026.07.23</div></div>
+            <div class="sd-item-wrap"><div class="sd-item-body"><div class="sd-item-title">MOU 체결</div><div class="sd-item-date">2026.06.15</div></div><button class="sd-del-btn" contenteditable="false" onclick="sdDeleteItem(this)">✕</button></div>
+            <div class="sd-item-wrap"><div class="sd-item-body"><div class="sd-item-title">2차 실무협의체</div><div class="sd-item-date">2026.07.23</div></div><button class="sd-del-btn" contenteditable="false" onclick="sdDeleteItem(this)">✕</button></div>
+          </div>
+          <button class="sd-add-btn" contenteditable="false" onclick="sdShowAddForm(this)">+ 항목 추가</button>
+          <div class="sd-add-form" contenteditable="false" style="display:none">
+            <input type="text" class="sd-add-title" placeholder="제목">
+            <input type="text" class="sd-add-detail" placeholder="상세 내역">
+            <div class="sd-add-form-btns">
+              <button class="sd-add-confirm" onclick="sdConfirmAdd(this)">추가</button>
+              <button class="sd-add-cancel" onclick="sdCancelAdd(this)">취소</button>
+            </div>
           </div>
         </div>
         <div class="sd-col progress">
           <div class="sd-head"><span class="sd-dot"></span><span class="sd-label">진행중</span><span class="sd-count">2</span></div>
           <div class="sd-items">
-            <div><div class="sd-item-title">4개 분과 운영</div><div class="sd-item-date">컨설팅·데이터·정책제휴·신규서비스</div></div>
-            <div><div class="sd-item-title">토스뱅크·케이뱅크 데이터 공급</div><div class="sd-item-date">NICE 채널 통해 진행 중</div></div>
+            <div class="sd-item-wrap"><div class="sd-item-body"><div class="sd-item-title">4개 분과 운영</div><div class="sd-item-date">컨설팅·데이터·정책제휴·신규서비스</div></div><button class="sd-del-btn" contenteditable="false" onclick="sdDeleteItem(this)">✕</button></div>
+            <div class="sd-item-wrap"><div class="sd-item-body"><div class="sd-item-title">토스뱅크·케이뱅크 데이터 공급</div><div class="sd-item-date">NICE 채널 통해 진행 중</div></div><button class="sd-del-btn" contenteditable="false" onclick="sdDeleteItem(this)">✕</button></div>
+          </div>
+          <button class="sd-add-btn" contenteditable="false" onclick="sdShowAddForm(this)">+ 항목 추가</button>
+          <div class="sd-add-form" contenteditable="false" style="display:none">
+            <input type="text" class="sd-add-title" placeholder="제목">
+            <input type="text" class="sd-add-detail" placeholder="상세 내역">
+            <div class="sd-add-form-btns">
+              <button class="sd-add-confirm" onclick="sdConfirmAdd(this)">추가</button>
+              <button class="sd-add-cancel" onclick="sdCancelAdd(this)">취소</button>
+            </div>
           </div>
         </div>
         <div class="sd-col next">
           <div class="sd-head"><span class="sd-dot"></span><span class="sd-label">예정</span><span class="sd-count">2</span></div>
           <div class="sd-items">
-            <div><div class="sd-item-title">제3차 실무협의체 + 워크숍</div><div class="sd-item-date">8월 중</div></div>
-            <div><div class="sd-item-title">분과별 담당자 지정</div><div class="sd-item-date">워크숍 이전</div></div>
+            <div class="sd-item-wrap"><div class="sd-item-body"><div class="sd-item-title">제3차 실무협의체 + 워크숍</div><div class="sd-item-date">8월 중</div></div><button class="sd-del-btn" contenteditable="false" onclick="sdDeleteItem(this)">✕</button></div>
+            <div class="sd-item-wrap"><div class="sd-item-body"><div class="sd-item-title">분과별 담당자 지정</div><div class="sd-item-date">워크숍 이전</div></div><button class="sd-del-btn" contenteditable="false" onclick="sdDeleteItem(this)">✕</button></div>
+          </div>
+          <button class="sd-add-btn" contenteditable="false" onclick="sdShowAddForm(this)">+ 항목 추가</button>
+          <div class="sd-add-form" contenteditable="false" style="display:none">
+            <input type="text" class="sd-add-title" placeholder="제목">
+            <input type="text" class="sd-add-detail" placeholder="상세 내역">
+            <div class="sd-add-form-btns">
+              <button class="sd-add-confirm" onclick="sdConfirmAdd(this)">추가</button>
+              <button class="sd-add-cancel" onclick="sdCancelAdd(this)">취소</button>
+            </div>
           </div>
         </div>
       </div>
@@ -5279,7 +5366,7 @@ const SECURITY_CODE = "techfin2026"; // 회원가입 시 필요한 회사 보안
    이 버전보다 "이전" 버전 기준으로 저장된 Firestore 수정본은
    자동으로 무시되고, 방금 배포한 최신 정적 내용이 우선 표시됩니다.
    ──────────────────────────────────────────── */
-const MANUAL_BUILD_VERSION = "2026-08-06T14:29:00+09:00";
+const MANUAL_BUILD_VERSION = "2026-08-06T14:36:00+09:00";
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -5409,6 +5496,78 @@ function initEditToolbars(){
   });
 }
 
+/* ═══════════════════════════════════════════
+   완료/진행중/예정 대시보드 — 항목 추가·삭제
+   (편집모드에서만 버튼 노출, 저장은 기존 섹션 저장 버튼이 함께 처리)
+   ═══════════════════════════════════════════ */
+window.sdShowAddForm = function(btn){
+  const form = btn.nextElementSibling;
+  btn.style.display = 'none';
+  form.style.display = 'block';
+  form.querySelector('.sd-add-title').focus();
+};
+
+window.sdCancelAdd = function(btn){
+  const form = btn.closest('.sd-add-form');
+  form.querySelector('.sd-add-title').value = '';
+  form.querySelector('.sd-add-detail').value = '';
+  form.style.display = 'none';
+  form.previousElementSibling.style.display = 'block';
+};
+
+window.sdConfirmAdd = function(btn){
+  const form = btn.closest('.sd-add-form');
+  const titleInput = form.querySelector('.sd-add-title');
+  const detailInput = form.querySelector('.sd-add-detail');
+  const title = titleInput.value.trim();
+  const detail = detailInput.value.trim();
+  if (!title) { titleInput.focus(); return; }
+
+  const col = form.closest('.sd-col');
+  const itemsWrap = col.querySelector('.sd-items');
+
+  const item = document.createElement('div');
+  item.className = 'sd-item-wrap';
+  const body = document.createElement('div');
+  body.className = 'sd-item-body';
+  const t = document.createElement('div');
+  t.className = 'sd-item-title';
+  t.textContent = title;
+  const d = document.createElement('div');
+  d.className = 'sd-item-date';
+  d.textContent = detail;
+  body.appendChild(t);
+  body.appendChild(d);
+  const delBtn = document.createElement('button');
+  delBtn.className = 'sd-del-btn';
+  delBtn.setAttribute('contenteditable', 'false');
+  delBtn.setAttribute('onclick', 'sdDeleteItem(this)');
+  delBtn.textContent = '✕';
+  item.appendChild(body);
+  item.appendChild(delBtn);
+  itemsWrap.appendChild(item);
+
+  sdUpdateCount(col);
+
+  titleInput.value = '';
+  detailInput.value = '';
+  form.style.display = 'none';
+  form.previousElementSibling.style.display = 'block';
+};
+
+window.sdDeleteItem = function(btn){
+  const item = btn.closest('.sd-item-wrap');
+  const col = item.closest('.sd-col');
+  item.remove();
+  sdUpdateCount(col);
+};
+
+function sdUpdateCount(col){
+  const count = col.querySelectorAll('.sd-item-wrap').length;
+  const countEl = col.querySelector('.sd-count');
+  if (countEl) countEl.textContent = count;
+}
+
 window.toggleEditSection = function(secId){
   const zone = document.getElementById('editzone-' + secId);
   const btn = document.getElementById('editbtn-' + secId);
@@ -5422,6 +5581,16 @@ window.toggleEditSection = function(secId){
     btn.classList.add('saving');
     status.textContent = '';
   } else {
+    // 저장 전, 열려있는 "항목 추가" 입력폼이 있으면 취소 처리(빈 폼이 저장되지 않도록)
+    zone.querySelectorAll('.sd-add-form').forEach(form => {
+      if (form.style.display === 'block') {
+        form.querySelector('.sd-add-title').value = '';
+        form.querySelector('.sd-add-detail').value = '';
+        form.style.display = 'none';
+        if (form.previousElementSibling) form.previousElementSibling.style.display = 'block';
+      }
+    });
+
     zone.contentEditable = 'false';
     btn.textContent = '⏳ 저장 중...';
     saveEditableSectionToFirestore(secId).then(() => {
