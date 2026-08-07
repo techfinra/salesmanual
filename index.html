@@ -96,6 +96,7 @@ body {
   text-decoration: none;
 }
 .nav-item:hover { background: rgba(255,255,255,0.05); color: #fff; }
+.nav-item.nav-sub { padding-left: 40px; font-size: 12px; color: rgba(255,255,255,0.5); }
 .nav-item.active {
   background: rgba(37,99,235,0.25);
   border-left-color: var(--blue-soft);
@@ -887,6 +888,72 @@ body {
 #page-toc .toc-dot{ width:5px; height:5px; border-radius:50%; background:currentColor; opacity:0.5; flex-shrink:0; margin-top:5px; }
 @media(max-width:640px){ #page-toc{ display:none !important; } }
 
+/* ═══════════ 이슈·공유방 ═══════════ */
+.issue-toolbar{ display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; flex-wrap:wrap; gap:10px; }
+.issue-filter-tabs{ display:flex; gap:6px; }
+.issue-ftab{ padding:6px 14px; border-radius:16px; border:1px solid var(--line); background:#fff; font-size:11.5px; font-weight:600; color:var(--gray); cursor:pointer; font-family:inherit; }
+.issue-ftab.active{ background:var(--navy); border-color:var(--navy); color:#fff; }
+.issue-new-btn{ background:var(--navy); color:#fff; border:none; padding:9px 18px; border-radius:20px; font-size:12.5px; font-weight:700; cursor:pointer; font-family:inherit; }
+.issue-new-btn:hover{ background:#152B5E; }
+
+.issue-form{ display:none; background:var(--white); border:1.5px solid #93C5FD; border-radius:12px; padding:18px; margin-bottom:20px; }
+.issue-form.show{ display:block; }
+.issue-form label{ display:block; font-size:11px; font-weight:700; color:var(--navy); margin-bottom:5px; margin-top:12px; }
+.issue-form label:first-child{ margin-top:0; }
+.issue-form input[type=text], .issue-form textarea{
+  width:100%; box-sizing:border-box; padding:9px 12px; border:1px solid var(--line); border-radius:8px;
+  font-size:13px; font-family:inherit; outline:none;
+}
+.issue-form textarea{ min-height:70px; resize:vertical; }
+.issue-form input:focus, .issue-form textarea:focus{ border-color:var(--blue); }
+.issue-priority-pick{ display:flex; gap:8px; }
+.issue-priority-opt{
+  flex:1; padding:10px; border:1.5px solid var(--line); border-radius:8px; text-align:center;
+  cursor:pointer; font-size:12.5px; font-weight:700; color:var(--gray);
+}
+.issue-priority-opt.picked-urgent{ border-color:#DC2626; background:#FEF2F2; color:#DC2626; }
+.issue-priority-opt.picked-normal{ border-color:#16A34A; background:#F0FDF4; color:#16A34A; }
+.issue-form-btns{ display:flex; gap:8px; margin-top:16px; }
+.issue-form-btns button{ padding:9px 20px; border-radius:8px; border:none; font-size:12.5px; font-weight:700; cursor:pointer; font-family:inherit; }
+.issue-submit-btn{ background:var(--navy); color:#fff; }
+.issue-cancel-btn{ background:#F1F5F9; color:#374151; }
+
+.issue-list{ display:flex; flex-direction:column; gap:10px; }
+.issue-card{ background:var(--white); border:1px solid var(--line); border-radius:12px; overflow:hidden; }
+.issue-card.urgent{ border-left:4px solid #DC2626; }
+.issue-card.normal{ border-left:4px solid #16A34A; }
+.issue-card.done{ opacity:0.55; }
+.issue-card-head{ display:flex; align-items:flex-start; gap:10px; padding:14px 16px; cursor:pointer; }
+.issue-pdot{ width:9px; height:9px; border-radius:50%; margin-top:5px; flex-shrink:0; }
+.issue-pdot.urgent{ background:#DC2626; }
+.issue-pdot.normal{ background:#16A34A; }
+.issue-card-title{ font-size:13.5px; font-weight:700; color:var(--ink,#1F2937); flex:1; }
+.issue-card.done .issue-card-title{ text-decoration:line-through; }
+.issue-card-meta{ font-size:10.5px; color:var(--gray); margin-top:3px; }
+.issue-done-badge{ background:#F0FDF4; color:#16A34A; font-size:10px; font-weight:700; padding:2px 8px; border-radius:10px; flex-shrink:0; }
+.issue-comment-count{ font-size:10.5px; color:var(--gray); flex-shrink:0; white-space:nowrap; }
+.issue-card-body{ display:none; padding:0 16px 16px 35px; }
+.issue-card-body.show{ display:block; }
+.issue-detail-text{ font-size:12.5px; color:#333; line-height:1.7; margin-bottom:14px; white-space:pre-wrap; }
+.issue-card-actions{ display:flex; gap:8px; margin-bottom:16px; }
+.issue-act-btn{ font-size:11px; font-weight:700; padding:5px 12px; border-radius:14px; border:1px solid var(--line); background:#fff; cursor:pointer; font-family:inherit; color:var(--gray); }
+.issue-act-btn.done-btn:hover{ background:#F0FDF4; border-color:#86EFAC; color:#16A34A; }
+.issue-act-btn.reopen-btn:hover{ background:#FEF9C3; border-color:#FDE68A; color:#92400E; }
+.issue-act-btn.del-btn:hover{ background:#FEF2F2; border-color:#FCA5A5; color:#DC2626; }
+
+.issue-comments{ border-top:1px solid var(--line); padding-top:12px; }
+.issue-comment-item{ display:flex; gap:8px; margin-bottom:10px; }
+.issue-c-avatar{ width:24px; height:24px; border-radius:50%; background:var(--navy); color:#fff; font-size:10px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.issue-c-body{ flex:1; background:#F8FAFC; border-radius:10px; padding:8px 12px; }
+.issue-c-author{ font-size:11px; font-weight:700; color:var(--navy); }
+.issue-c-time{ font-size:9.5px; color:var(--gray); font-weight:400; margin-left:6px; }
+.issue-c-text{ font-size:12px; color:#333; margin-top:2px; line-height:1.5; }
+.issue-comment-input-row{ display:flex; gap:8px; margin-top:10px; }
+.issue-comment-input-row input{ flex:1; padding:8px 12px; border:1px solid var(--line); border-radius:20px; font-size:12px; font-family:inherit; outline:none; }
+.issue-comment-input-row input:focus{ border-color:var(--blue); }
+.issue-comment-send{ background:var(--navy); color:#fff; border:none; width:34px; height:34px; border-radius:50%; cursor:pointer; font-size:13px; flex-shrink:0; }
+.issue-empty{ text-align:center; padding:40px 20px; color:var(--gray); font-size:13px; }
+
 /* ═══════════ AUTH GATE ═══════════ */
 #auth-gate{
   position:fixed; inset:0; z-index:1000;
@@ -1045,8 +1112,14 @@ body {
     <div class="nav-item" onclick="showSection('copetition-kcb')">
       <span class="icon">🤝</span> KCB 실무협의체
     </div>
+    <div class="nav-item nav-sub" onclick="showSection('issue-kcb')">
+      <span class="icon">💬</span> KCB 이슈·공유방
+    </div>
     <div class="nav-item" onclick="showSection('copetition-nice')">
       <span class="icon">🤝</span> NICE 실무협의체
+    </div>
+    <div class="nav-item nav-sub" onclick="showSection('issue-nice')">
+      <span class="icon">💬</span> NICE 이슈·공유방
     </div>
   </div>
 
@@ -3736,6 +3809,40 @@ body {
       </div>
     </div>
 
+    <!-- ═══ ISSUE BOARD — KCB ═══ -->
+    <div id="issue-kcb" class="page-section">
+      <div class="sec-header">
+        <h1>KCB 이슈·공유방</h1>
+        <p>KCB 실무협의체 관련 최근 이슈·논의사항을 등록하고 팀원들과 댓글로 논의하세요</p>
+      </div>
+      <div class="issue-toolbar">
+        <div class="issue-filter-tabs" id="issue-filter-kcb">
+          <button class="issue-ftab active" onclick="setIssueFilter('kcb','all',this)">전체</button>
+          <button class="issue-ftab" onclick="setIssueFilter('kcb','open',this)">진행중</button>
+          <button class="issue-ftab" onclick="setIssueFilter('kcb','done',this)">완료</button>
+        </div>
+        <button class="issue-new-btn" onclick="showIssueForm('kcb')">+ 새 이슈 등록</button>
+      </div>
+
+      <div class="issue-form" id="issue-form-kcb">
+        <label>제목</label>
+        <input type="text" id="issue-title-kcb" placeholder="예: SCB매출정보 제공방식 최종 확정 필요">
+        <label>상세 내역</label>
+        <textarea id="issue-detail-kcb" placeholder="논의 배경, 필요한 결정사항, 관련 담당자 등을 자유롭게 적어주세요"></textarea>
+        <label>우선순위</label>
+        <div class="issue-priority-pick">
+          <div class="issue-priority-opt" id="pri-kcb-urgent" onclick="pickPriority('kcb','urgent')">🔴 긴급</div>
+          <div class="issue-priority-opt" id="pri-kcb-normal" onclick="pickPriority('kcb','normal')">🟢 보통</div>
+        </div>
+        <div class="issue-form-btns">
+          <button class="issue-submit-btn" onclick="submitNewIssue('kcb')">등록</button>
+          <button class="issue-cancel-btn" onclick="hideIssueForm('kcb')">취소</button>
+        </div>
+      </div>
+
+      <div class="issue-list" id="issue-list-kcb"></div>
+    </div>
+
     <!-- ═══ COPETITION NICE ═══ -->
     <div id="copetition-nice" class="page-section">
       <div class="sec-header">
@@ -4107,6 +4214,40 @@ body {
           ② 각 분과별로 워크숍에서 공유하거나 NICE 측과 사전 협의가 필요한 추가 안건 있으면 육태우 과장에게 공유
         </div>
       </div>
+    </div>
+
+    <!-- ═══ ISSUE BOARD — NICE ═══ -->
+    <div id="issue-nice" class="page-section">
+      <div class="sec-header">
+        <h1>NICE 이슈·공유방</h1>
+        <p>NICE평가정보 실무협의체 관련 최근 이슈·논의사항을 등록하고 팀원들과 댓글로 논의하세요</p>
+      </div>
+      <div class="issue-toolbar">
+        <div class="issue-filter-tabs" id="issue-filter-nice">
+          <button class="issue-ftab active" onclick="setIssueFilter('nice','all',this)">전체</button>
+          <button class="issue-ftab" onclick="setIssueFilter('nice','open',this)">진행중</button>
+          <button class="issue-ftab" onclick="setIssueFilter('nice','done',this)">완료</button>
+        </div>
+        <button class="issue-new-btn" onclick="showIssueForm('nice')">+ 새 이슈 등록</button>
+      </div>
+
+      <div class="issue-form" id="issue-form-nice">
+        <label>제목</label>
+        <input type="text" id="issue-title-nice" placeholder="예: 신규서비스분과 사전협의 일정 확정 필요">
+        <label>상세 내역</label>
+        <textarea id="issue-detail-nice" placeholder="논의 배경, 필요한 결정사항, 관련 담당자 등을 자유롭게 적어주세요"></textarea>
+        <label>우선순위</label>
+        <div class="issue-priority-pick">
+          <div class="issue-priority-opt" id="pri-nice-urgent" onclick="pickPriority('nice','urgent')">🔴 긴급</div>
+          <div class="issue-priority-opt" id="pri-nice-normal" onclick="pickPriority('nice','normal')">🟢 보통</div>
+        </div>
+        <div class="issue-form-btns">
+          <button class="issue-submit-btn" onclick="submitNewIssue('nice')">등록</button>
+          <button class="issue-cancel-btn" onclick="hideIssueForm('nice')">취소</button>
+        </div>
+      </div>
+
+      <div class="issue-list" id="issue-list-nice"></div>
     </div>
 
     <!-- ═══ DZ AI MARKETING ═══ -->
@@ -5479,6 +5620,8 @@ const pageTitles = {
   'sales-manual': '세일즈 매뉴얼',
   'copetition-kcb': 'KCB 실무협의체',
   'copetition-nice': 'NICE평가정보 실무협의체',
+  'issue-kcb': 'KCB 이슈·공유방',
+  'issue-nice': 'NICE 이슈·공유방',
   'dz-ai-marketing': 'AI 경영진단 마케팅',
   'contract-platform': '플랫폼 계약',
   'contract-pricing': '플랫폼 이용요금',
@@ -5857,7 +6000,8 @@ import {
   onAuthStateChanged, signOut, updateProfile
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 import {
-  getFirestore, doc, getDoc, setDoc, serverTimestamp
+  getFirestore, doc, getDoc, setDoc, serverTimestamp,
+  collection, addDoc, updateDoc, deleteDoc, onSnapshot, arrayUnion, query, where
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 /* ────────────────────────────────────────────
@@ -5883,7 +6027,7 @@ const SECURITY_CODE = "techfin2026"; // 회원가입 시 필요한 회사 보안
    이 버전보다 "이전" 버전 기준으로 저장된 Firestore 수정본은
    자동으로 무시되고, 방금 배포한 최신 정적 내용이 우선 표시됩니다.
    ──────────────────────────────────────────── */
-const MANUAL_BUILD_VERSION = "2026-08-07T09:23:00+09:00";
+const MANUAL_BUILD_VERSION = "2026-08-07T09:53:00+09:00";
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -5972,6 +6116,7 @@ onAuthStateChanged(auth, (user) => {
     if (label) label.textContent = (user.displayName || user.email);
     loadAllEditableContent();
     if (typeof wrapResponsiveElements === 'function') wrapResponsiveElements('home');
+    initIssueBoard();
   } else {
     gate.style.display = 'flex';
     root.style.display = 'none';
@@ -6192,6 +6337,188 @@ async function loadAllEditableContent(){
       console.warn('Firestore 로드 실패 (' + secId + '):', err.message);
     }
   }
+}
+
+/* ═══════════════════════════════════════════
+   이슈·공유방 (KCB / NICE) — 실시간 카드형 게시판
+   ═══════════════════════════════════════════ */
+let allIssues = [];
+let issueFilters = { kcb: 'all', nice: 'all' };
+let pickedPriority = { kcb: null, nice: null };
+const issueOpenCards = new Set();
+
+function initIssueBoard() {
+  const issuesRef = collection(db, 'issues');
+  onSnapshot(issuesRef, (snap) => {
+    allIssues = [];
+    snap.forEach(d => allIssues.push({ id: d.id, ...d.data() }));
+    renderIssueList('kcb');
+    renderIssueList('nice');
+  }, (err) => {
+    console.warn('이슈 목록 로드 실패:', err.message);
+  });
+}
+
+window.showIssueForm = function(boardKey){
+  document.getElementById('issue-form-' + boardKey).classList.add('show');
+};
+window.hideIssueForm = function(boardKey){
+  document.getElementById('issue-form-' + boardKey).classList.remove('show');
+  document.getElementById('issue-title-' + boardKey).value = '';
+  document.getElementById('issue-detail-' + boardKey).value = '';
+  pickedPriority[boardKey] = null;
+  document.getElementById('pri-' + boardKey + '-urgent').classList.remove('picked-urgent');
+  document.getElementById('pri-' + boardKey + '-normal').classList.remove('picked-normal');
+};
+
+window.pickPriority = function(boardKey, priority){
+  pickedPriority[boardKey] = priority;
+  document.getElementById('pri-' + boardKey + '-urgent').classList.toggle('picked-urgent', priority === 'urgent');
+  document.getElementById('pri-' + boardKey + '-normal').classList.toggle('picked-normal', priority === 'normal');
+};
+
+window.submitNewIssue = async function(boardKey){
+  const title = document.getElementById('issue-title-' + boardKey).value.trim();
+  const detail = document.getElementById('issue-detail-' + boardKey).value.trim();
+  const priority = pickedPriority[boardKey] || 'normal';
+  if (!title) { document.getElementById('issue-title-' + boardKey).focus(); return; }
+
+  const user = auth.currentUser;
+  try {
+    await addDoc(collection(db, 'issues'), {
+      board: boardKey,
+      title, detail, priority,
+      status: 'open',
+      createdBy: user ? (user.displayName || user.email) : '익명',
+      createdAt: serverTimestamp(),
+      comments: []
+    });
+    hideIssueForm(boardKey);
+  } catch (err) {
+    alert('등록 실패: ' + err.message);
+  }
+};
+
+window.setIssueFilter = function(boardKey, filter, btn){
+  issueFilters[boardKey] = filter;
+  document.querySelectorAll('#issue-filter-' + boardKey + ' .issue-ftab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderIssueList(boardKey);
+};
+
+function renderIssueList(boardKey){
+  const container = document.getElementById('issue-list-' + boardKey);
+  if (!container) return;
+
+  let items = allIssues.filter(it => it.board === boardKey);
+  const filter = issueFilters[boardKey];
+  if (filter === 'open') items = items.filter(it => it.status !== 'done');
+  if (filter === 'done') items = items.filter(it => it.status === 'done');
+
+  // 정렬: 열린 이슈 우선, 그 안에서 긴급→보통, 최신순
+  items.sort((a, b) => {
+    const aDone = a.status === 'done' ? 1 : 0;
+    const bDone = b.status === 'done' ? 1 : 0;
+    if (aDone !== bDone) return aDone - bDone;
+    const aPri = a.priority === 'urgent' ? 0 : 1;
+    const bPri = b.priority === 'urgent' ? 0 : 1;
+    if (aPri !== bPri) return aPri - bPri;
+    const aT = a.createdAt && a.createdAt.toMillis ? a.createdAt.toMillis() : 0;
+    const bT = b.createdAt && b.createdAt.toMillis ? b.createdAt.toMillis() : 0;
+    return bT - aT;
+  });
+
+  if (items.length === 0) {
+    container.innerHTML = '<div class="issue-empty">등록된 이슈가 없습니다. "+ 새 이슈 등록"으로 첫 이슈를 올려보세요.</div>';
+    return;
+  }
+
+  container.innerHTML = items.map(it => {
+    const isOpen = issueOpenCards.has(it.id);
+    const t = it.createdAt && it.createdAt.toDate ? it.createdAt.toDate().toLocaleString('ko-KR') : '방금';
+    const commentCount = (it.comments || []).length;
+    const commentsHtml = (it.comments || []).map(c => `
+      <div class="issue-comment-item">
+        <div class="issue-c-avatar">${(c.author||'?').charAt(0)}</div>
+        <div class="issue-c-body">
+          <span class="issue-c-author">${escapeHtml(c.author||'익명')}</span><span class="issue-c-time">${c.at ? new Date(c.at).toLocaleString('ko-KR') : ''}</span>
+          <div class="issue-c-text">${escapeHtml(c.text||'')}</div>
+        </div>
+      </div>`).join('');
+
+    return `
+    <div class="issue-card ${it.priority === 'urgent' ? 'urgent' : 'normal'} ${it.status === 'done' ? 'done' : ''}">
+      <div class="issue-card-head" onclick="toggleIssueCard('${it.id}','${boardKey}')">
+        <span class="issue-pdot ${it.priority === 'urgent' ? 'urgent' : 'normal'}"></span>
+        <div style="flex:1">
+          <div class="issue-card-title">${escapeHtml(it.title||'')}</div>
+          <div class="issue-card-meta">${escapeHtml(it.createdBy||'익명')} · ${t}</div>
+        </div>
+        ${it.status === 'done' ? '<span class="issue-done-badge">완료</span>' : ''}
+        <span class="issue-comment-count">💬 ${commentCount}</span>
+      </div>
+      <div class="issue-card-body ${isOpen ? 'show' : ''}" id="issue-body-${it.id}">
+        <div class="issue-detail-text">${escapeHtml(it.detail || '(상세 내역 없음)')}</div>
+        <div class="issue-card-actions">
+          ${it.status === 'done'
+            ? `<button class="issue-act-btn reopen-btn" onclick="reopenIssue('${it.id}')">↩️ 다시 열기</button>`
+            : `<button class="issue-act-btn done-btn" onclick="markIssueDone('${it.id}')">✅ 완료 처리</button>`}
+          <button class="issue-act-btn del-btn" onclick="deleteIssueConfirm('${it.id}')">🗑️ 삭제</button>
+        </div>
+        <div class="issue-comments">
+          ${commentsHtml}
+          <div class="issue-comment-input-row">
+            <input type="text" id="comment-input-${it.id}" placeholder="댓글 입력..." onkeydown="if(event.key==='Enter'){submitComment('${it.id}')}">
+            <button class="issue-comment-send" onclick="submitComment('${it.id}')">➤</button>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+window.toggleIssueCard = function(issueId, boardKey){
+  if (issueOpenCards.has(issueId)) {
+    issueOpenCards.delete(issueId);
+  } else {
+    issueOpenCards.add(issueId);
+  }
+  renderIssueList(boardKey);
+};
+
+window.markIssueDone = async function(issueId){
+  await updateDoc(doc(db, 'issues', issueId), { status: 'done' });
+};
+window.reopenIssue = async function(issueId){
+  await updateDoc(doc(db, 'issues', issueId), { status: 'open' });
+};
+window.deleteIssueConfirm = async function(issueId){
+  if (!confirm('이 이슈를 삭제할까요? 댓글도 함께 삭제되며 되돌릴 수 없습니다.')) return;
+  await deleteDoc(doc(db, 'issues', issueId));
+};
+
+window.submitComment = async function(issueId){
+  const input = document.getElementById('comment-input-' + issueId);
+  const text = input.value.trim();
+  if (!text) return;
+  const user = auth.currentUser;
+  const comment = {
+    author: user ? (user.displayName || user.email) : '익명',
+    text,
+    at: Date.now()
+  };
+  input.value = '';
+  try {
+    await updateDoc(doc(db, 'issues', issueId), { comments: arrayUnion(comment) });
+  } catch (err) {
+    alert('댓글 등록 실패: ' + err.message);
+  }
+};
+
+function escapeHtml(str){
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
 }
 </script>
 </body>
