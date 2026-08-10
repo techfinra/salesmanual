@@ -3401,7 +3401,9 @@ body {
             <div style="padding:13px 16px;font-size:12px;color:#333;line-height:1.75;display:none">
               이상거래탐지 체크리스트(12개 항목) 결과와 KCB Fraud 서비스·판정결과 결합하여 고도화.<br>
               <b>4개 카테고리</b>: 대금거래 실재성 탐지(매출/매입 대금회수·지급 이력) · 회전거래 탐지(회전거래 업체/참여 연루 여부) · 고위험거래처 연루 탐지(폭탄업체·가공거래 연루) · 인적·물적 연계성 탐지(동일세무대리인·사업장주소·대표자 동일 여부)<br>
-              <b style="color:#92400E">현행 이슈</b>: 현재 관계 사업자 개별 입력 방식 → 범용화 위해 매출/매입 상위 5개 자동 산출 필요
+              <b style="color:#92400E">현행 이슈</b>: 현재 관계 사업자 개별 입력 방식 → 범용화 위해 매출/매입 상위 5개 자동 산출 필요<br>
+              <img src="assets/kcb-topic6-fraud-checklist.png" alt="이상거래탐지 체크리스트(12개 항목) 원본 다이어그램" style="width:100%;max-width:100%;border:1px solid var(--line);border-radius:8px;margin-top:12px;cursor:zoom-in" onclick="tfImgZoom(this.src)">
+              <div style="font-size:10.5px;color:var(--gray);margin-top:4px">원본 자료(이상거래탐지 체크리스트) · 클릭하면 확대됩니다</div>
             </div>
           </div>
 
@@ -6007,7 +6009,7 @@ const SECURITY_CODE = "techfin2026"; // 회원가입 시 필요한 회사 보안
    이 버전보다 "이전" 버전 기준으로 저장된 Firestore 수정본은
    자동으로 무시되고, 방금 배포한 최신 정적 내용이 우선 표시됩니다.
    ──────────────────────────────────────────── */
-const MANUAL_BUILD_VERSION = "2026-08-10T15:48:00+09:00";
+const MANUAL_BUILD_VERSION = "2026-08-10T15:55:00+09:00";
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
