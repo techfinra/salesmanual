@@ -3409,6 +3409,24 @@ body {
               <b style="color:#92400E">현행 이슈</b>: 현재 관계 사업자 개별 입력 방식 → 범용화 위해 매출/매입 상위 5개 자동 산출 필요<br>
               <img src="assets/kcb-topic6-fraud-checklist.png" alt="이상거래탐지 체크리스트(12개 항목) 원본 다이어그램" style="width:100%;max-width:100%;border:1px solid var(--line);border-radius:8px;margin-top:12px;cursor:zoom-in" onclick="tfImgZoom(this.src)">
               <div style="font-size:10.5px;color:var(--gray);margin-top:4px">원본 자료(이상거래탐지 체크리스트) · 클릭하면 확대됩니다</div>
+
+              <div style="background:#FFFBEB;border:1px solid #FDE68A;border-radius:8px;padding:12px 14px;margin-top:14px">
+                <b style="color:#92400E">📄 상품소개서 반영(2026.8, CB본부) — 5단계 서비스 구조</b><br>
+                <b>거래관계분석(서비스 중)</b>: ①이상거래 탐지(체크리스트) → ②세금계산서 거래 네트워크 탐색(부가가치 없는 자전거래 도식화)<br>
+                <b>현금거래분석(8월 오픈 예정)</b>: ③거래처 상호대사 체크(양사 장부 계정과목 단위 비교로 거래 실질 판단) → ④현금 거래 네트워크 탐색(채권·채무·대여·차입 현금흐름 연결)<br>
+                → <b>⑤ 사기 의심 거래 종합 진단</b> (네트워크 관계망 × 현금거래 관계망 비교, 정상~위험 5단계 시그널)<br>
+                <span style="color:var(--gray);font-size:11px">테크핀 추가 보유 기능: 상호대사(매출신고 vs 매입 신고 불일치 탐지) — 향후 오픈 준비 중</span>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px">
+                <div>
+                  <img src="assets/fraud-detection-screen-checklist.jpg" alt="사기거래탐지 서비스 화면(체크리스트)" style="width:100%;border:1px solid var(--line);border-radius:8px;cursor:zoom-in" onclick="tfImgZoom(this.src)">
+                  <div style="font-size:10px;color:var(--gray);margin-top:4px">서비스 화면(체크리스트) · 클릭 확대</div>
+                </div>
+                <div>
+                  <img src="assets/fraud-detection-screen-network.jpg" alt="사기거래탐지 서비스 화면(네트워크 관계망)" style="width:100%;border:1px solid var(--line);border-radius:8px;cursor:zoom-in" onclick="tfImgZoom(this.src)">
+                  <div style="font-size:10px;color:var(--gray);margin-top:4px">서비스 화면(네트워크 관계망 — 4차 회전거래 식별) · 클릭 확대</div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -3473,6 +3491,22 @@ body {
               <tr><td><b>분기총매입매출액</b></td><td>법인 전체거래처 분기 매입/매출, 개인 전체거래처 반기 매입/매출</td></tr>
             </tbody>
           </table>
+        </div>
+
+        <div style="font-size:11px;font-weight:700;color:var(--gray);margin-bottom:10px">원본 자료 — SCB 소상공인 매출액 조회 프로세스 · 데이터 제공(안)</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px">
+          <div>
+            <img src="assets/kcb-scb-process-flow.jpg" alt="[KCB] SCB 소상공인 매출액 조회 프로세스" style="width:100%;border:1px solid var(--line);border-radius:8px;cursor:zoom-in" onclick="tfImgZoom(this.src)">
+            <div style="font-size:10.5px;color:var(--gray);margin-top:4px">SCB 소상공인 매출액 조회 프로세스 · 클릭하면 확대됩니다</div>
+          </div>
+          <div>
+            <img src="assets/kcb-scb-data-provision-plan.jpg" alt="소상공인 매출액 Data 제공(안)" style="width:100%;border:1px solid var(--line);border-radius:8px;cursor:zoom-in" onclick="tfImgZoom(this.src)">
+            <div style="font-size:10.5px;color:var(--gray);margin-top:4px">소상공인 매출액 Data 제공(안) — 컬럼 스펙 및 제공방식 · 클릭하면 확대됩니다</div>
+          </div>
+        </div>
+        <div class="callout" style="font-size:12px;margin-bottom:24px">
+          제공정보: 최근 2개년 분기별 매출액(총 8분기) · 제공방식: Batch(월배치)<br>
+          기본제공(테크핀 보유 약 100만 사업자) + 추가제공(더존 보유 약 500만 사업자, 요청시 +1M 익월 제공) 2단 구조 — 테크핀→KCB→한국신용정보원 순으로 매출정보 전달, KCB는 사업자번호·요청금융기관 정보를 역으로 요청
         </div>
 
         <div style="font-size:11px;font-weight:700;color:var(--gray);margin-bottom:10px">제공방식 4개 옵션 비교</div>
@@ -4283,7 +4317,24 @@ body {
             <div style="padding:13px 16px;font-size:12px;color:#333;line-height:1.8;display:none">
               테크핀·SGI서울보증 공동개발 사기거래탐지 체크리스트(회전거래·가공거래·취소거래·폭탄업체 연루 등) 보유<br>
               NICE 과거 사기이력·네트워크 정보 결합 시 탐지 정확도·범위 확대 가능. 현행 "계약관계 기준 양사 사업자번호 입력" → 단일 사업자 위험도 판단 방식 고도화 검토<br>
-              테크핀 추가 보유 기능: <b>상호대사</b>(매출신고 vs 매입 측 신고 불일치 탐지) — 향후 오픈 준비 중
+              테크핀 추가 보유 기능: <b>상호대사</b>(매출신고 vs 매입 측 신고 불일치 탐지) — 향후 오픈 준비 중<br>
+
+              <div style="background:#FFFBEB;border:1px solid #FDE68A;border-radius:8px;padding:12px 14px;margin-top:10px">
+                <b style="color:#92400E">📄 상품소개서 반영(2026.8, CB본부) — 5단계 서비스 구조</b><br>
+                <b>거래관계분석(서비스 중)</b>: ①이상거래 탐지(체크리스트) → ②세금계산서 거래 네트워크 탐색(부가가치 없는 자전거래 도식화)<br>
+                <b>현금거래분석(8월 오픈 예정)</b>: ③거래처 상호대사 체크(양사 장부 계정과목 단위 비교) → ④현금 거래 네트워크 탐색(채권·채무·대여·차입 현금흐름 연결)<br>
+                → <b>⑤ 사기 의심 거래 종합 진단</b> (네트워크 관계망 × 현금거래 관계망 비교, 정상~위험 5단계 시그널)
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px">
+                <div>
+                  <img src="assets/fraud-detection-screen-checklist.jpg" alt="사기거래탐지 서비스 화면(체크리스트)" style="width:100%;border:1px solid var(--line);border-radius:8px;cursor:zoom-in" onclick="tfImgZoom(this.src)">
+                  <div style="font-size:10px;color:var(--gray);margin-top:4px">서비스 화면(체크리스트) · 클릭 확대</div>
+                </div>
+                <div>
+                  <img src="assets/fraud-detection-screen-network.jpg" alt="사기거래탐지 서비스 화면(네트워크 관계망)" style="width:100%;border:1px solid var(--line);border-radius:8px;cursor:zoom-in" onclick="tfImgZoom(this.src)">
+                  <div style="font-size:10px;color:var(--gray);margin-top:4px">서비스 화면(네트워크 관계망 — 4차 회전거래 식별) · 클릭 확대</div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -6179,7 +6230,7 @@ const SECURITY_CODE = "techfin2026"; // 회원가입 시 필요한 회사 보안
    이 버전보다 "이전" 버전 기준으로 저장된 Firestore 수정본은
    자동으로 무시되고, 방금 배포한 최신 정적 내용이 우선 표시됩니다.
    ──────────────────────────────────────────── */
-const MANUAL_BUILD_VERSION = "2026-08-10T16:42:00+09:00";
+const MANUAL_BUILD_VERSION = "2026-08-10T17:10:00+09:00";
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
