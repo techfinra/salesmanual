@@ -4308,86 +4308,107 @@ body {
         </div>
 
         <div class="di-h2">🧩 테크핀 제안 7대 신규 서비스 아이디어</div>
-        <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:20px">
+        <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:24px">
 
-          <div style="border:1.5px solid #93C5FD;border-radius:8px;overflow:hidden">
+          <div style="border:1px solid var(--line);border-radius:8px;overflow:hidden">
             <div style="background:#EFF6FF;padding:11px 16px;display:flex;align-items:center;gap:10px;cursor:pointer" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-              <span style="background:#1D4ED8;color:#fff;padding:2px 8px;border-radius:12px;font-size:10.5px;font-weight:700">① 핵심 제안</span>
-              <b style="font-size:12.5px;color:#1E3A8A">상거래정보 서비스 — GNN + D-Pay Index 결합</b>
+              <span style="background:#1D4ED8;color:#fff;padding:2px 8px;border-radius:12px;font-size:10.5px;font-weight:700">주제1</span>
+              <b style="font-size:12.5px;color:#1E3A8A">상거래정보 서비스</b>
               <span style="font-size:11px;color:var(--gray);margin-left:auto">클릭하여 상세보기</span>
             </div>
-            <div style="padding:13px 16px;font-size:12px;color:#333;line-height:1.8;display:none">
-              <b>GNN(그래프뉴럴네트워크) 위험전이 모형</b>: 1~3차 거래처 매출·매입 관계망 분석, 거래처 부도·폐업·매출감소가 피평가기업에 미치는 리스크 전이 스코어화<br>
-              <b>D-Pay Index(디페이 인덱스)</b>: 매출채권 회수기간·매입채무 지급기간을 월별 추적 — 회수 지연/지급 가속 패턴은 유동성 위기 선행 신호. <b>타 신평사 미보유 독점 지표</b><br>
-              <b>검증 결과</b>: 신한은행 거래 차주 데이터 결합분석 → <b style="color:#1D4ED8">AR 60 이상</b> (단독 모형보다 결합 시 효과 높음)<br>
-              <b style="color:#DC2626">한계</b>: 건별 매출채권 발생·회수 전표 정제 필요(준비시간 소요), 현재 신한은행 차주 기준만 검증 완료<br>
-              <b>NICE 기여 가능성</b>: 연체·네트워크 정보 + 테크핀 기장데이터 융합 시 추가 개선 기대
+            <div style="padding:13px 16px;font-size:12px;color:#333;line-height:1.75;display:none">
+              거래처(관계망) 관련 차별화 서비스로 KCB 관계망 데이터와 시너지 기대. 매입정보 기반 부도전조 포착에 강점.<br>
+              <b style="color:#DC2626">⚠️ 한계</b>: 분석데이터 현재 신한은행 동의 차주만 확보 — 전체 확산 위해 부가세 정보 분석데이터 생성 필요<br>
+              <b>검증 데이터</b>: 회수지급모형 AR 35.96~57.9 (업종별) · 법인대상 결합분석 시 AR 최대 58.6 (GNN모형 결합 시 60.21까지 상승)<br>
+              <img src="assets/kcb-topic1-commercial-info.png" alt="상거래정보 서비스 As-Is/To-Be 다이어그램" style="width:100%;max-width:100%;border:1px solid var(--line);border-radius:8px;margin-top:12px;cursor:zoom-in" onclick="tfImgZoom(this.src)">
+              <div style="font-size:10.5px;color:var(--gray);margin-top:4px">클릭하면 확대됩니다</div>
             </div>
           </div>
 
           <div style="border:1px solid var(--line);border-radius:8px;overflow:hidden">
             <div style="background:#F0FDF4;padding:11px 16px;display:flex;align-items:center;gap:10px;cursor:pointer" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-              <span style="background:#16A34A;color:#fff;padding:2px 8px;border-radius:12px;font-size:10.5px;font-weight:700">②</span>
-              <b style="font-size:12.5px;color:#14532D">기장데이터 기반 EWS 특화</b>
+              <span style="background:#16A34A;color:#fff;padding:2px 8px;border-radius:12px;font-size:10.5px;font-weight:700">주제2</span>
+              <b style="font-size:12.5px;color:#14532D">조기경보 공동 개발</b>
               <span style="font-size:11px;color:var(--gray);margin-left:auto">클릭하여 상세보기</span>
             </div>
-            <div style="padding:13px 16px;font-size:12px;color:#333;line-height:1.8;display:none">
-              더존 기장 데이터(월별 매출·매입·현금흐름) 기반 EWS 특화 — 결산 공백기 조기 이상신호 포착이 핵심 가치<br>
-              NICE 연체·부도이력 + 테크핀 월별 재무추이 결합 시 더 선행적인 EWS 가능
+            <div style="padding:13px 16px;font-size:12px;color:#333;line-height:1.75;display:none">
+              테크핀 데이터는 법인 재무상태를 적시성 있게 관찰 가능 — 기존 EWS가 놓치는 부분 보완·고도화 가능.<br>
+              <table class="tf-table" style="margin-top:8px">
+                <thead><tr><th></th><th>구분</th><th>AR</th><th>부도율(하위5%)</th><th>부도율(하위10%)</th></tr></thead>
+                <tbody>
+                  <tr><td rowspan="2"><b>테크핀 EWS</b></td><td>법인</td><td>0.57</td><td>53.54%</td><td>36.20%</td></tr>
+                  <tr><td>개인</td><td>0.43</td><td>20.97%</td><td>13.42%</td></tr>
+                  <tr><td rowspan="3"><b>시중은행 EWS</b></td><td>비외감</td><td>0.78</td><td>42.94%</td><td>29.05%</td></tr>
+                  <tr><td>중기업</td><td>0.76</td><td>43.88%</td><td>30.13%</td></tr>
+                  <tr><td>소기업</td><td>0.76</td><td>31.59%</td><td>20.78%</td></tr>
+                </tbody>
+              </table>
+              <img src="assets/kcb-topic2-ews-table.png" alt="테크핀 EWS·시중은행 EWS AR/부도율 비교표" style="max-width:340px;width:100%;border:1px solid var(--line);border-radius:8px;margin-top:10px;cursor:zoom-in" onclick="tfImgZoom(this.src)">
+              <div style="font-size:10.5px;color:var(--gray);margin-top:4px">원본 자료 · 클릭하면 확대됩니다</div>
             </div>
           </div>
 
           <div style="border:1px solid var(--line);border-radius:8px;overflow:hidden">
             <div style="background:#FFF7ED;padding:11px 16px;display:flex;align-items:center;gap:10px;cursor:pointer" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-              <span style="background:#EA580C;color:#fff;padding:2px 8px;border-radius:12px;font-size:10.5px;font-weight:700">③</span>
-              <b style="font-size:12.5px;color:#9A3412">신설기업 평가모형</b>
+              <span style="background:#EA580C;color:#fff;padding:2px 8px;border-radius:12px;font-size:10.5px;font-weight:700">주제3</span>
+              <b style="font-size:12.5px;color:#9A3412">신설기업 모형</b>
               <span style="font-size:11px;color:var(--gray);margin-left:auto">클릭하여 상세보기</span>
             </div>
-            <div style="padding:13px 16px;font-size:12px;color:#333;line-height:1.8;display:none">
-              결산 재무제표 없이도 기장 데이터(기중 매출·매입 전표)로 신설기업 평가 가능 (기존은 최소 1~2년 결산 필요)<br>
-              NICE 대표자 개인신용·CB정보 + 테크핀 기장 원천데이터 결합 시 정확도 향상 → 신설기업 커버리지 확대 및 금융기관 신규 거래대상자 확보 기여
+            <div style="padding:13px 16px;font-size:12px;color:#333;line-height:1.75;display:none">
+              신설기업 정보 한계를 테크핀 데이터 + KCB 대표자 정보 융합으로 극복, 안정성 확보.<br>
+              <b>개발 결과 (26.05 개발완료)</b>: 개발대상 57,520社 · 개발set 부도율 5.05% · 변별력(AR) <b style="color:#EA580C">59.9%</b><br>
+              <img src="assets/kcb-topic3-startup-mis.png" alt="신설기업 MIS 모형 원본 표" style="max-width:340px;width:100%;border:1px solid var(--line);border-radius:8px;margin-top:10px;cursor:zoom-in" onclick="tfImgZoom(this.src)">
+              <div style="font-size:10.5px;color:var(--gray);margin-top:4px">원본 자료 · 클릭하면 확대됩니다</div>
             </div>
           </div>
 
           <div style="border:1px solid var(--line);border-radius:8px;overflow:hidden">
             <div style="background:#F0F9FF;padding:11px 16px;display:flex;align-items:center;gap:10px;cursor:pointer" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-              <span style="background:#0EA5E9;color:#fff;padding:2px 8px;border-radius:12px;font-size:10.5px;font-weight:700">④</span>
-              <b style="font-size:12.5px;color:#0C4A6E">현금흐름 특화 모형/서비스</b>
+              <span style="background:#0EA5E9;color:#fff;padding:2px 8px;border-radius:12px;font-size:10.5px;font-weight:700">주제4</span>
+              <b style="font-size:12.5px;color:#0C4A6E">현금흐름 관련 서비스(모형 등) 개발</b>
               <span style="font-size:11px;color:var(--gray);margin-left:auto">클릭하여 상세보기</span>
             </div>
-            <div style="padding:13px 16px;font-size:12px;color:#333;line-height:1.8;display:none">
-              CPS 변별력 분석 상위 = 현금 관련 항목(보유액·소진속도·월별 패턴) — 부도 선행지표로 유의<br>
-              타 신평사 미보유 월별 현금 데이터 기반 특화 스코어/서비스 개발 가능. 크레더블 등 일부 핀테크 유사 개념 시도 중
+            <div style="padding:13px 16px;font-size:12px;color:#333;line-height:1.75;display:none">
+              가장 변별력 높은 항목: <b>현금등가물·예금</b> 관련 CPS 변수. 기업 현금흐름 연계 서비스 개발 기대감.<br>
+              <b>CPS 변수 예시</b>: 당좌(예금)비율(잔액/유동부채) AR 41.32 / KS 34.26 — 지급능력(유동자산) 카테고리 상위 변수<br>
+              <img src="assets/kcb-topic4-cps-selection.png" alt="항목선정결과 CPS 변수 AR·KS 원본 표" style="width:100%;max-width:100%;border:1px solid var(--line);border-radius:8px;margin-top:12px;cursor:zoom-in" onclick="tfImgZoom(this.src)">
+              <div style="font-size:10.5px;color:var(--gray);margin-top:4px">원본 자료(항목선정결과) · 클릭하면 확대됩니다</div>
             </div>
           </div>
 
           <div style="border:1px solid var(--line);border-radius:8px;overflow:hidden">
             <div style="background:#FAF5FF;padding:11px 16px;display:flex;align-items:center;gap:10px;cursor:pointer" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-              <span style="background:#7C3AED;color:#fff;padding:2px 8px;border-radius:12px;font-size:10.5px;font-weight:700">⑤</span>
+              <span style="background:#7C3AED;color:#fff;padding:2px 8px;border-radius:12px;font-size:10.5px;font-weight:700">주제5</span>
               <b style="font-size:12.5px;color:#4C1D95">개인사업자 모형 공동개발</b>
               <span style="font-size:11px;color:var(--gray);margin-left:auto">클릭하여 상세보기</span>
             </div>
-            <div style="padding:13px 16px;font-size:12px;color:#333;line-height:1.8;display:none">
-              법인뿐 아니라 개인사업자 기장 데이터 보유 → 공동 모형 개발 가능. 금융기관의 개인사업자 심사 고도화 수요 대응
+            <div style="padding:13px 16px;font-size:12px;color:#333;line-height:1.75;display:none">
+              개인사업자 기장정보·매출매입정보 + KCB 대표자모형 결합 시 높은 변별력 확보 가능.<br>
+              <b>연도별 검증 결과(전체~2023년)</b>: AR 33.81~45.72 · KS 23.2~33.2% · PSI 0.005~0.15(안정적) — 최근 연도로 갈수록 다소 하락 추세, 원인 논의 필요<br>
+              <img src="assets/kcb-topic5-validation.png" alt="변별력&안정성 검증 결과 원본 표" style="max-width:430px;width:100%;border:1px solid var(--line);border-radius:8px;margin-top:10px;cursor:zoom-in" onclick="tfImgZoom(this.src)">
+              <div style="font-size:10.5px;color:var(--gray);margin-top:4px">원본 자료(변별력&안정성 검증 결과) · 클릭하면 확대됩니다</div>
             </div>
           </div>
 
           <div style="border:1px solid var(--line);border-radius:8px;overflow:hidden">
             <div style="background:#FEF9C3;padding:11px 16px;display:flex;align-items:center;gap:10px;cursor:pointer" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-              <span style="background:#C8A84B;color:#fff;padding:2px 8px;border-radius:12px;font-size:10.5px;font-weight:700">⑥</span>
-              <b style="font-size:12.5px;color:#92400E">사기거래탐지 고도화</b>
+              <span style="background:#C8A84B;color:#fff;padding:2px 8px;border-radius:12px;font-size:10.5px;font-weight:700">주제6</span>
+              <b style="font-size:12.5px;color:#92400E">사기거래 컨텐츠 고도화</b>
               <span style="font-size:11px;color:var(--gray);margin-left:auto">클릭하여 상세보기</span>
             </div>
-            <div style="padding:13px 16px;font-size:12px;color:#333;line-height:1.8;display:none">
-              테크핀·SGI서울보증 공동개발 사기거래탐지 체크리스트(회전거래·가공거래·취소거래·폭탄업체 연루 등) 보유<br>
-              NICE 과거 사기이력·네트워크 정보 결합 시 탐지 정확도·범위 확대 가능. 현행 "계약관계 기준 양사 사업자번호 입력" → 단일 사업자 위험도 판단 방식 고도화 검토<br>
-              테크핀 추가 보유 기능: <b>상호대사</b>(매출신고 vs 매입 측 신고 불일치 탐지) — 향후 오픈 준비 중<br>
+            <div style="padding:13px 16px;font-size:12px;color:#333;line-height:1.75;display:none">
+              이상거래탐지 체크리스트(12개 항목) 결과와 KCB Fraud 서비스·판정결과 결합하여 고도화.<br>
+              <b>4개 카테고리</b>: 대금거래 실재성 탐지(매출/매입 대금회수·지급 이력) · 회전거래 탐지(회전거래 업체/참여 연루 여부) · 고위험거래처 연루 탐지(폭탄업체·가공거래 연루) · 인적·물적 연계성 탐지(동일세무대리인·사업장주소·대표자 동일 여부)<br>
+              <b style="color:#92400E">현행 이슈</b>: 현재 관계 사업자 개별 입력 방식 → 범용화 위해 매출/매입 상위 5개 자동 산출 필요<br>
+              <img src="assets/kcb-topic6-fraud-checklist.png" alt="이상거래탐지 체크리스트(12개 항목) 원본 다이어그램" style="width:100%;max-width:100%;border:1px solid var(--line);border-radius:8px;margin-top:12px;cursor:zoom-in" onclick="tfImgZoom(this.src)">
+              <div style="font-size:10.5px;color:var(--gray);margin-top:4px">원본 자료(이상거래탐지 체크리스트) · 클릭하면 확대됩니다</div>
 
-              <div style="background:#FFFBEB;border:1px solid #FDE68A;border-radius:8px;padding:12px 14px;margin-top:10px">
+              <div style="background:#FFFBEB;border:1px solid #FDE68A;border-radius:8px;padding:12px 14px;margin-top:14px">
                 <b style="color:#92400E">📄 상품소개서 반영(2026.8, CB본부) — 5단계 서비스 구조</b><br>
                 <b>거래관계분석(서비스 중)</b>: ①이상거래 탐지(체크리스트) → ②세금계산서 거래 네트워크 탐색(부가가치 없는 자전거래 도식화)<br>
-                <b>현금거래분석(8월 오픈 예정)</b>: ③거래처 상호대사 체크(양사 장부 계정과목 단위 비교) → ④현금 거래 네트워크 탐색(채권·채무·대여·차입 현금흐름 연결)<br>
-                → <b>⑤ 사기 의심 거래 종합 진단</b> (네트워크 관계망 × 현금거래 관계망 비교, 정상~위험 5단계 시그널)
+                <b>현금거래분석(8월 오픈 예정)</b>: ③거래처 상호대사 체크(양사 장부 계정과목 단위 비교로 거래 실질 판단) → ④현금 거래 네트워크 탐색(채권·채무·대여·차입 현금흐름 연결)<br>
+                → <b>⑤ 사기 의심 거래 종합 진단</b> (네트워크 관계망 × 현금거래 관계망 비교, 정상~위험 5단계 시그널)<br>
+                <span style="color:var(--gray);font-size:11px">테크핀 추가 보유 기능: 상호대사(매출신고 vs 매입 신고 불일치 탐지) — 향후 오픈 준비 중</span>
               </div>
               <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px">
                 <div>
@@ -4404,14 +4425,17 @@ body {
 
           <div style="border:1px solid var(--line);border-radius:8px;overflow:hidden">
             <div style="background:#F3F4F6;padding:11px 16px;display:flex;align-items:center;gap:10px;cursor:pointer" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-              <span style="background:#6B7280;color:#fff;padding:2px 8px;border-radius:12px;font-size:10.5px;font-weight:700">⑦ 중기과제</span>
-              <b style="font-size:12.5px;color:#374151">성장성 모형 — 생산적금융 연계</b>
+              <span style="background:#6B7280;color:#fff;padding:2px 8px;border-radius:12px;font-size:10.5px;font-weight:700">주제7</span>
+              <b style="font-size:12.5px;color:#374151">기타 아이디어 6종</b>
               <span style="font-size:11px;color:var(--gray);margin-left:auto">클릭하여 상세보기</span>
             </div>
             <div style="padding:13px 16px;font-size:12px;color:#333;line-height:1.8;display:none">
-              정책 배경: 정부 생산적금융·포용금융 기조 속 소상공인·중소기업 성장지원 모형 수요 증가, SCB 사업 민간이관 중<br>
-              공급망·하도급 밸류체인 매출파급효과를 세금계산서로 추적 — 시설투자(유형자산 취득), 고용증가, 하도급 매입확대를 파급지표로 설정. NICE·KoDATA가 구현 불가한 독보적 타겟<br>
-              <b style="color:#DC2626">쟁점</b>: '성장의 정의'가 정책기관·금융기관 내부에서도 합의 안 된 상태 — 심사역·리스크관리자·마케터 기준이 제각각. NICE 의견: 모형보다 CPS 지표(성장성 항목 리스트업) 수준으로 먼저 제시하는 게 현실적
+              • <b>개인사업자 식별 서비스</b>: 카드사 등 마케팅 니즈 있으나 개인신용정보 리스크 — 더존 자체생성·결과만 전달 방식 검토 필요<br>
+              • <b>성장지원 서비스</b>: 결산대비 우량 차주 금융혜택 지원<br>
+              • <b>부동산정보 서비스</b>: 부동산임대공급가액명세서 정보 활용 (하단 상세 참조)<br>
+              • <b>전대(자금유용) 서비스</b>: 약정 용도 외 자금집행 탐지<br>
+              • <b>기업모형 고도화</b>: 테크핀 정보 결합해 카드사 등 스코어 서비스 활용<br>
+              • <b>폐쇄망 AI서비스</b>: 오픈소스 기반 자체 AI서비스 개발 노하우 보유(경영진단보고서 사례) → 비용 절감
             </div>
           </div>
         </div>
@@ -6316,7 +6340,7 @@ const SECURITY_CODE = "techfin2026"; // 회원가입 시 필요한 회사 보안
    이 버전보다 "이전" 버전 기준으로 저장된 Firestore 수정본은
    자동으로 무시되고, 방금 배포한 최신 정적 내용이 우선 표시됩니다.
    ──────────────────────────────────────────── */
-const MANUAL_BUILD_VERSION = "2026-08-10T17:35:00+09:00";
+const MANUAL_BUILD_VERSION = "2026-08-10T17:48:00+09:00";
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
