@@ -2946,6 +2946,68 @@ body {
         </div>
       </div>
 
+      <!-- ══════════ SCB 정책 동향 (금융위 7.27 발표) ══════════ -->
+      <div id="kcb-toc-policy" style="margin-top:36px;padding-top:24px;border-top:2px dashed var(--line)">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
+          <span style="background:#DC2626;color:#fff;padding:3px 10px;border-radius:12px;font-size:10.5px;font-weight:700">📌 정책 동향 (2026.07.27)</span>
+          <h2 style="font-size:16px;font-weight:800;color:var(--navy);margin:0">SCB(소상공인 특화 신용평가체계) 금융위 발표 — KCB 협업 배경 정리</h2>
+        </div>
+        <p style="font-size:12.5px;color:var(--gray);margin-bottom:20px">금융위원회 「포용금융 전략추진단」 신용인프라 분과회의 · 제7차 신용평가체계 개편 T/F ('26.7.27, 신진창 사무처장 주재) — SCB 은행권 도입 준비상황 점검 및 관계기관·전문가 의견수렴. <b>당사 매출정보가 KCB→신용정보원 경로로 SCB 모형에 투입</b>되는 구조라, 아래 정책 확산 속도가 곧 데이터 공급 채널 확장 속도와 직결됨.</p>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px">
+          <div style="background:var(--white);border:1px solid var(--line);border-radius:10px;padding:16px">
+            <div style="font-size:11px;font-weight:700;color:var(--navy);margin-bottom:8px">① 시범은행 대폭 확대</div>
+            <div style="font-size:12.5px;color:#333;line-height:1.7">기존 7개 → <b>16개 은행, 2.2조원 규모</b> 사업자대출에 SCB 적용<br><span style="color:var(--gray);font-size:11.5px">기존: 기업·신한·국민·우리·농협·하나·제주 ('26.8월말~)<br>추가: 케이·카카오·토스·수협·iM·부산·경남·광주·전북 ('26 하반기~)</span></div>
+          </div>
+          <div style="background:var(--white);border:1px solid var(--line);border-radius:10px;padding:16px">
+            <div style="font-size:11px;font-weight:700;color:var(--navy);margin-bottom:8px">② 개인사업자 전용 사잇돌대출 연계</div>
+            <div style="font-size:12.5px;color:#333;line-height:1.7">SGI서울보증 보증서 기반 중금리대출에 SCB 성장등급 활용 → 중신용 고성장 사업자 <b>금리우대</b><br><span style="color:var(--gray);font-size:11.5px">한도 2천→3천만원, 연간공급 1,000억→최대 1,500억, '26.10월 출시 목표</span></div>
+          </div>
+          <div style="background:var(--white);border:1px solid var(--line);border-radius:10px;padding:16px">
+            <div style="font-size:11px;font-weight:700;color:var(--navy);margin-bottom:8px">③ 지역신용보증재단 확대 ('27년~)</div>
+            <div style="font-size:12.5px;color:#333;line-height:1.7">기존 재무·신용도 중심 보증심사에 SCB(상권정보 등 비금융정보) 반영 준비 중, 신용보증재단중앙회 시스템 반영 후 '27년 시행</div>
+          </div>
+          <div style="background:var(--white);border:1px solid var(--line);border-radius:10px;padding:16px">
+            <div style="font-size:11px;font-weight:700;color:var(--navy);margin-bottom:8px">④ 규정·가이드라인 8월 정비</div>
+            <div style="font-size:12.5px;color:#333;line-height:1.7">「신용정보업 감독규정」·「개인사업자대출 여신심사 가이드라인」 개정 + 「SCB 운영 가이드라인」(대출심사 활용 프로세스, <b>임직원 면책조항</b> 포함) 8월 중 배포</div>
+          </div>
+        </div>
+
+        <div style="font-size:11px;font-weight:700;color:var(--gray);letter-spacing:1px;margin-bottom:10px">SCB 모형 구조 (한국신용정보원 · 별첨 자료 기준)</div>
+        <div style="background:var(--white);border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:16px;font-size:12.5px;color:#333;line-height:1.8">
+          <b>신용등급(사업자 CB등급)</b> + <b>성장등급(S등급 = 정량 AI모형 + 비계량 정성체크리스트)</b> → <b>SCB 등급</b> 산출<br>
+          성장등급 높을수록 CB등급 상향 반영 → 대출가능성↑·한도↑·금리↓<br>
+          업종별 4개 세부모형: <b>Seg1 도소매업 · Seg2 숙박음식업 · Seg3 서비스업 · Seg4 기술업</b>
+        </div>
+
+        <div style="font-size:11px;font-weight:700;color:var(--gray);letter-spacing:1px;margin-bottom:10px">소상공인 전용 DB — 성장모형 투입 데이터 (제공처별)</div>
+        <table class="tf-table" style="margin-bottom:16px">
+          <thead><tr><th>정보</th><th>내용</th><th>제공처</th><th>주기</th></tr></thead>
+          <tbody>
+            <tr><td>사업자 매출 추정</td><td>카드·현금 결제 기반 가맹점 매출 추정</td><td>CB 3사</td><td>월</td></tr>
+            <tr style="background:#FEF9C3"><td><b>상권 지수</b></td><td>상권별 수익성/안정성/활동성/포화도 지수</td><td><b>KCB</b></td><td>월</td></tr>
+            <tr><td>결제 거래정보</td><td>VAN/POS 기반 최근 3·6개월 평균 거래규모 등</td><td>NICE</td><td>월</td></tr>
+            <tr><td>상권·금융 코호트</td><td>반경(500m/1km/5km) 평균 매출·거주자수·연소득</td><td>NICE</td><td>분기</td></tr>
+            <tr><td>소상공인 공제정보</td><td>노란우산·공제기금·파란우산·PL보험 납부이력</td><td>중소기업중앙회</td><td>월</td></tr>
+            <tr><td>사업 지속성 정보</td><td>카드거래·VAN/POS·가맹계약상태 기반 영업징후</td><td>NICE</td><td>월</td></tr>
+            <tr><td>상시근로자 정보</td><td>고용·산재보험 피보험자 수, 연구인력 수</td><td>근로복지공단</td><td>월</td></tr>
+            <tr><td>온라인 플랫폼 정보</td><td>온라인 활동성·성장성 지수</td><td>온라인 플랫폼사</td><td>월</td></tr>
+          </tbody>
+        </table>
+
+        <div class="callout gold" style="margin-bottom:16px">
+          <b>💡 당사(테크핀) 시사점</b><br>
+          현재 KCB와 진행 중인 <b>SCB매출정보 제공(방안2, 월Batch 양방향)</b> 논의가 정확히 상권지수 데이터를 KCB가 담당하고 매출정보를 CB사가 공급하는 이 구조에 부합함. 8/11 정기 실무협의체에서 방안2 최종 확정 시 8월말 은행권 시범운영 개시 일정에 맞춰 전산개발 착수 필요. 향후 SCB가 全금융권('28년~)으로 확대될 예정이므로, 초기 데이터 공급사로 채널을 선점하는 것이 중요.
+        </div>
+
+        <div class="callout" style="font-size:12.5px;margin-bottom:20px">
+          <b>📌 향후 일정 체크포인트</b><br>
+          ① 8월말 — 성장등급 중개 플랫폼 구축 완료(참여기관 통합테스트~운영환경 오픈)<br>
+          ② 8월 중 — 「소상공인 성장금융 가이드라인」 제정·배포<br>
+          ③ 지속 — 소상공인 성장금융 데이터센터(SDB) 내실화, 성장 유의 데이터(카드매출·에너지사용량 등) 지속 발굴 → 당사 데이터 추가 공급 기회
+        </div>
+      </div>
+
       <!-- ══════════ 1차 신규사업 Ideation 미팅 준비 ══════════ -->
       <div id="kcb-toc-ideation" style="margin-top:36px;padding-top:24px;border-top:2px dashed var(--line)">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
@@ -5928,7 +5990,7 @@ const SECURITY_CODE = "techfin2026"; // 회원가입 시 필요한 회사 보안
    이 버전보다 "이전" 버전 기준으로 저장된 Firestore 수정본은
    자동으로 무시되고, 방금 배포한 최신 정적 내용이 우선 표시됩니다.
    ──────────────────────────────────────────── */
-const MANUAL_BUILD_VERSION = "2026-08-07T13:23:00+09:00";
+const MANUAL_BUILD_VERSION = "2026-08-10T11:15:00+09:00";
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
