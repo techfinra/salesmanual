@@ -3321,7 +3321,9 @@ body {
             <div style="padding:13px 16px;font-size:12px;color:#333;line-height:1.75;display:none">
               거래처(관계망) 관련 차별화 서비스로 KCB 관계망 데이터와 시너지 기대. 매입정보 기반 부도전조 포착에 강점.<br>
               <b style="color:#DC2626">⚠️ 한계</b>: 분석데이터 현재 신한은행 동의 차주만 확보 — 전체 확산 위해 부가세 정보 분석데이터 생성 필요<br>
-              <b>검증 데이터</b>: 회수지급모형 AR 35.96~57.9 (업종별) · 법인대상 결합분석 시 AR 최대 58.6 (GNN모형 결합 시 60.21까지 상승)
+              <b>검증 데이터</b>: 회수지급모형 AR 35.96~57.9 (업종별) · 법인대상 결합분석 시 AR 최대 58.6 (GNN모형 결합 시 60.21까지 상승)<br>
+              <img src="assets/kcb-topic1-commercial-info.png" alt="상거래정보 서비스 As-Is/To-Be 다이어그램" style="width:100%;max-width:100%;border:1px solid var(--line);border-radius:8px;margin-top:12px;cursor:zoom-in" onclick="tfImgZoom(this.src)">
+              <div style="font-size:10.5px;color:var(--gray);margin-top:4px">클릭하면 확대됩니다</div>
             </div>
           </div>
 
@@ -5566,6 +5568,22 @@ body {
 </div><!-- /layout -->
 </div><!-- /app-root -->
 
+<!-- 이미지 확대 라이트박스 -->
+<div id="tf-img-lightbox" onclick="tfImgZoomClose()" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(13,31,78,0.88);align-items:center;justify-content:center;cursor:zoom-out;padding:40px">
+  <img id="tf-img-lightbox-src" src="" style="max-width:95vw;max-height:92vh;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,0.5)">
+  <div style="position:absolute;top:20px;right:28px;color:#fff;font-size:28px;font-weight:300;cursor:pointer" onclick="tfImgZoomClose()">×</div>
+</div>
+
+<script>
+function tfImgZoom(src){
+  document.getElementById('tf-img-lightbox-src').src = src;
+  document.getElementById('tf-img-lightbox').style.display = 'flex';
+}
+function tfImgZoomClose(){
+  document.getElementById('tf-img-lightbox').style.display = 'none';
+}
+</script>
+
 <script>
 const pageTitles = {
   'home': '세일즈 매뉴얼 홈',
@@ -5981,7 +5999,7 @@ const SECURITY_CODE = "techfin2026"; // 회원가입 시 필요한 회사 보안
    이 버전보다 "이전" 버전 기준으로 저장된 Firestore 수정본은
    자동으로 무시되고, 방금 배포한 최신 정적 내용이 우선 표시됩니다.
    ──────────────────────────────────────────── */
-const MANUAL_BUILD_VERSION = "2026-08-10T14:55:00+09:00";
+const MANUAL_BUILD_VERSION = "2026-08-10T15:10:00+09:00";
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
