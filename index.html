@@ -6101,32 +6101,45 @@ body {
         <thead><tr><th style="width:20%">법령</th><th style="width:22%">주요 조항</th><th>당사 업무 연결점</th></tr></thead>
         <tbody>
           <tr>
-            <td><b style="color:var(--navy)">신용정보법</b><br><span style="font-size:11px;color:var(--gray)">가장 핵심</span></td>
+            <td>
+              <a href="https://www.law.go.kr/법령/신용정보의이용및보호에관한법률" target="_blank" style="font-weight:700;color:var(--navy);text-decoration:none">신용정보법 🔗</a><br>
+              <span style="font-size:11px;color:var(--gray)">가장 핵심</span>
+            </td>
             <td>§32 (제3자 제공 동의)<br>§33 (이용 목적 제한)<br>§22의9 (데이터전문기관)<br>§2 (기업신용조회업 정의)</td>
             <td>기업신용조회업 라이선스 근거 · 금융기관→당사 데이터 제공 시 동의 범위 · KCB/NICE 등 제3자 제공 구조의 법적 기반</td>
           </tr>
           <tr>
-            <td><b>개인정보보호법</b></td>
+            <td>
+              <a href="https://www.law.go.kr/법령/개인정보보호법" target="_blank" style="font-weight:700;color:#333;text-decoration:none">개인정보보호법 🔗</a>
+            </td>
             <td>§15 (수집·이용)<br>§17 (제3자 제공)<br>§23 (민감정보)</td>
             <td><b style="color:#DC2626">법인정보는 원칙적 적용 제외</b>이나, <b>개인사업자 세그먼트는 개인정보에 해당</b>하여 별도 검토 필수 — 커버리지 이슈와도 직결</td>
           </tr>
           <tr>
-            <td><b>클라우드컴퓨팅법</b></td>
+            <td>
+              <a href="https://www.law.go.kr/법령/클라우드컴퓨팅발전및이용자보호에관한법률" target="_blank" style="font-weight:700;color:#333;text-decoration:none">클라우드컴퓨팅법 🔗</a>
+            </td>
             <td>§27 (이용자 정보 보호)</td>
             <td>더존(ERP) → 테크핀 데이터 제공의 법적 근거 <span style="color:#16A34A;font-size:11px">(정리 완료)</span></td>
           </tr>
           <tr>
-            <td>전자금융거래법</td>
+            <td>
+              <a href="https://www.law.go.kr/법령/전자금융거래법" target="_blank" style="font-weight:700;color:#333;text-decoration:none">전자금융거래법 🔗</a>
+            </td>
             <td>§21 (안전성 확보의무) 등</td>
             <td>금융기관 대상 전산 연동·API 제공 시 보안 요건</td>
           </tr>
           <tr>
-            <td>여신전문금융업법</td>
+            <td>
+              <a href="https://www.law.go.kr/법령/여신전문금융업법" target="_blank" style="font-weight:700;color:#333;text-decoration:none">여신전문금융업법 🔗</a>
+            </td>
             <td>-</td>
             <td>카드사·캐피탈사 대상 서비스 제공 시 관련 규제 확인</td>
           </tr>
           <tr>
-            <td>신용정보업 감독규정</td>
+            <td>
+              <a href="https://www.law.go.kr/행정규칙/신용정보업감독규정" target="_blank" style="font-weight:700;color:#333;text-decoration:none">신용정보업 감독규정 🔗</a>
+            </td>
             <td>금융위 고시</td>
             <td>SCB 관련 8월 개정 예정 — 소상공인 성장금융 가이드라인과 연동</td>
           </tr>
@@ -6830,7 +6843,7 @@ const SECURITY_CODE = "techfin2026"; // 회원가입 시 필요한 회사 보안
    이 버전보다 "이전" 버전 기준으로 저장된 Firestore 수정본은
    자동으로 무시되고, 방금 배포한 최신 정적 내용이 우선 표시됩니다.
    ──────────────────────────────────────────── */
-const MANUAL_BUILD_VERSION = "2026-08-12T11:40:00+09:00";
+const MANUAL_BUILD_VERSION = "2026-08-12T11:52:00+09:00";
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
