@@ -6851,7 +6851,7 @@ const SECURITY_CODE = "techfin2026"; // 회원가입 시 필요한 회사 보안
    이 버전보다 "이전" 버전 기준으로 저장된 Firestore 수정본은
    자동으로 무시되고, 방금 배포한 최신 정적 내용이 우선 표시됩니다.
    ──────────────────────────────────────────── */
-const MANUAL_BUILD_VERSION = "2026-08-14T09:30:00+09:00";
+const MANUAL_BUILD_VERSION = "2026-08-14T10:05:00+09:00";
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -7282,7 +7282,6 @@ function renderIssueList(boardKey){
   if (filter === 'open') items = items.filter(it => it.status !== 'done');
   if (filter === 'done') items = items.filter(it => it.status === 'done');
 
-  // 정렬: 열린 이슈 우선, 그 안에서 긴급→보통, 최신순
   items.sort((a, b) => {
     const aDone = a.status === 'done' ? 1 : 0;
     const bDone = b.status === 'done' ? 1 : 0;
@@ -7296,22 +7295,57 @@ function renderIssueList(boardKey){
   });
 
   if (items.length === 0) {
-    container.innerHTML = '<div class="issue-empty">등록된 이슈가 없습니다. "+ 새 이슈 등록"으로 첫 이슈를 올려보세요.</div>';
+    container.innerHTML = '<div class="issue-empty">등록된 이슈가 없습니다. \"+ 새 이슈 등록\"으로 첫 이슈를 올려보세요.</div>';
     return;
   }
 
   container.innerHTML = items.map(it => {
     const isOpen = issueOpenCards.has(it.id);
+    const isEditing = issueEditingId === it.id;
     const t = it.createdAt && it.createdAt.toDate ? it.createdAt.toDate().toLocaleString('ko-KR') : '방금';
     const commentCount = (it.comments || []).length;
-    const commentsHtml = (it.comments || []).map(c => `
+
+    const commentsHtml = (it.comments || []).map((c, idx) => {
+      const isEditingComment = commentEditingKey === `${it.id}__${idx}`;
+      return `
       <div class="issue-comment-item">
         <div class="issue-c-avatar">${(c.author||'?').charAt(0)}</div>
-        <div class="issue-c-body">
-          <span class="issue-c-author">${escapeHtml(c.author||'익명')}</span><span class="issue-c-time">${c.at ? new Date(c.at).toLocaleString('ko-KR') : ''}</span>
-          <div class="issue-c-text">${escapeHtml(c.text||'')}</div>
+        <div class="issue-c-body" style="flex:1">
+          <span class="issue-c-author">${escapeHtml(c.author||'익명')}</span>
+          <span class="issue-c-time">${c.at ? new Date(c.at).toLocaleString('ko-KR') : ''}${c.editedAt ? ' <span style=\"color:#94A3B8;font-size:10px\">(수정됨)</span>' : ''}</span>
+          ${isEditingComment
+            ? `<div style="display:flex;gap:6px;margin-top:6px">
+                <input id="comment-edit-input-${it.id}-${idx}" type="text" value="${escapeHtml(c.text||'')}" style="flex:1;border:1.5px solid var(--blue);border-radius:6px;padding:5px 9px;font-size:12.5px;font-family:inherit" onkeydown="if(event.key==='Enter'){saveCommentEdit('${it.id}',${idx},'${boardKey}')}if(event.key==='Escape'){cancelCommentEdit('${boardKey}')}">
+                <button onclick="saveCommentEdit('${it.id}',${idx},'${boardKey}')" style="background:var(--navy);color:#fff;border:none;border-radius:6px;padding:5px 10px;font-size:11.5px;cursor:pointer">저장</button>
+                <button onclick="cancelCommentEdit('${boardKey}')" style="background:#F1F5F9;color:#64748B;border:none;border-radius:6px;padding:5px 10px;font-size:11.5px;cursor:pointer">취소</button>
+               </div>`
+            : `<div class="issue-c-text">${escapeHtml(c.text||'')}</div>
+               <div style="display:flex;gap:8px;margin-top:4px">
+                 <button onclick="startCommentEdit('${it.id}',${idx},'${boardKey}')" style="background:none;border:none;color:#94A3B8;font-size:11px;cursor:pointer;padding:0">✏️ 수정</button>
+                 <button onclick="deleteComment('${it.id}',${idx},'${boardKey}')" style="background:none;border:none;color:#94A3B8;font-size:11px;cursor:pointer;padding:0">🗑️ 삭제</button>
+               </div>`
+          }
         </div>
-      </div>`).join('');
+      </div>`;
+    }).join('');
+
+    const issueBodyContent = isEditing
+      ? `<div style="display:flex;flex-direction:column;gap:8px;padding:12px 0">
+           <input id="issue-edit-title-${it.id}" type="text" value="${escapeHtml(it.title||'')}" style="border:1.5px solid var(--blue);border-radius:6px;padding:7px 10px;font-size:13px;font-family:inherit;font-weight:700">
+           <textarea id="issue-edit-detail-${it.id}" rows="4" style="border:1.5px solid var(--blue);border-radius:6px;padding:7px 10px;font-size:12.5px;font-family:inherit;resize:vertical">${escapeHtml(it.detail||'')}</textarea>
+           <div style="display:flex;gap:8px">
+             <button onclick="saveIssueEdit('${it.id}','${boardKey}')" style="background:var(--navy);color:#fff;border:none;border-radius:6px;padding:7px 16px;font-size:12.5px;font-weight:700;cursor:pointer">저장</button>
+             <button onclick="cancelIssueEdit('${boardKey}')" style="background:#F1F5F9;color:#64748B;border:none;border-radius:6px;padding:7px 14px;font-size:12.5px;cursor:pointer">취소</button>
+           </div>
+         </div>`
+      : `<div class="issue-detail-text">${escapeHtml(it.detail || '(상세 내역 없음)')}</div>
+         <div class="issue-card-actions">
+           <button class="issue-act-btn" onclick="startIssueEdit('${it.id}','${boardKey}')" style="background:#EFF6FF;color:#1D4ED8;border:1px solid #93C5FD">✏️ 수정</button>
+           ${it.status === 'done'
+             ? `<button class="issue-act-btn reopen-btn" onclick="reopenIssue('${it.id}')">↩️ 다시 열기</button>`
+             : `<button class="issue-act-btn done-btn" onclick="markIssueDone('${it.id}')">✅ 완료 처리</button>`}
+           <button class="issue-act-btn del-btn" onclick="deleteIssueConfirm('${it.id}')">🗑️ 삭제</button>
+         </div>`;
 
     return `
     <div class="issue-card ${it.priority === 'urgent' ? 'urgent' : 'normal'} ${it.status === 'done' ? 'done' : ''}">
@@ -7325,13 +7359,7 @@ function renderIssueList(boardKey){
         <span class="issue-comment-count">💬 ${commentCount}</span>
       </div>
       <div class="issue-card-body ${isOpen ? 'show' : ''}" id="issue-body-${it.id}">
-        <div class="issue-detail-text">${escapeHtml(it.detail || '(상세 내역 없음)')}</div>
-        <div class="issue-card-actions">
-          ${it.status === 'done'
-            ? `<button class="issue-act-btn reopen-btn" onclick="reopenIssue('${it.id}')">↩️ 다시 열기</button>`
-            : `<button class="issue-act-btn done-btn" onclick="markIssueDone('${it.id}')">✅ 완료 처리</button>`}
-          <button class="issue-act-btn del-btn" onclick="deleteIssueConfirm('${it.id}')">🗑️ 삭제</button>
-        </div>
+        ${issueBodyContent}
         <div class="issue-comments">
           ${commentsHtml}
           <div class="issue-comment-input-row">
@@ -7345,41 +7373,77 @@ function renderIssueList(boardKey){
 }
 
 window.toggleIssueCard = function(issueId, boardKey){
-  if (issueOpenCards.has(issueId)) {
-    issueOpenCards.delete(issueId);
-  } else {
-    issueOpenCards.add(issueId);
-  }
+  if (issueOpenCards.has(issueId)) issueOpenCards.delete(issueId);
+  else issueOpenCards.add(issueId);
   renderIssueList(boardKey);
 };
 
-window.markIssueDone = async function(issueId){
-  await updateDoc(doc(db, 'issues', issueId), { status: 'done' });
+// ═══ 이슈 수정 ═══
+let issueEditingId = null;
+window.startIssueEdit = function(issueId, boardKey){
+  issueEditingId = issueId;
+  issueOpenCards.add(issueId);
+  renderIssueList(boardKey);
+  setTimeout(() => { const el = document.getElementById('issue-edit-title-' + issueId); if (el) { el.focus(); el.select(); } }, 50);
 };
-window.reopenIssue = async function(issueId){
-  await updateDoc(doc(db, 'issues', issueId), { status: 'open' });
+window.cancelIssueEdit = function(boardKey){ issueEditingId = null; renderIssueList(boardKey); };
+window.saveIssueEdit = async function(issueId, boardKey){
+  const title = document.getElementById('issue-edit-title-' + issueId)?.value.trim();
+  const detail = document.getElementById('issue-edit-detail-' + issueId)?.value.trim();
+  if (!title) { alert('제목을 입력해주세요.'); return; }
+  try { await updateDoc(doc(db, 'issues', issueId), { title, detail: detail || '', editedAt: Date.now() }); issueEditingId = null; }
+  catch(err) { alert('수정 실패: ' + err.message); }
 };
+
+// ═══ 이슈 상태 변경 / 삭제 ═══
+window.markIssueDone = async function(issueId){ await updateDoc(doc(db, 'issues', issueId), { status: 'done' }); };
+window.reopenIssue = async function(issueId){ await updateDoc(doc(db, 'issues', issueId), { status: 'open' }); };
 window.deleteIssueConfirm = async function(issueId){
   if (!confirm('이 이슈를 삭제할까요? 댓글도 함께 삭제되며 되돌릴 수 없습니다.')) return;
   await deleteDoc(doc(db, 'issues', issueId));
 };
 
+// ═══ 댓글 등록 ═══
 window.submitComment = async function(issueId){
   const input = document.getElementById('comment-input-' + issueId);
   const text = input.value.trim();
   if (!text) return;
   const user = auth.currentUser;
-  const comment = {
-    author: user ? (user.displayName || user.email) : '익명',
-    text,
-    at: Date.now()
-  };
+  const comment = { author: user ? (user.displayName || user.email) : '익명', text, at: Date.now() };
   input.value = '';
-  try {
-    await updateDoc(doc(db, 'issues', issueId), { comments: arrayUnion(comment) });
-  } catch (err) {
-    alert('댓글 등록 실패: ' + err.message);
-  }
+  try { await updateDoc(doc(db, 'issues', issueId), { comments: arrayUnion(comment) }); }
+  catch (err) { alert('댓글 등록 실패: ' + err.message); }
+};
+
+// ═══ 댓글 수정 ═══
+let commentEditingKey = null;
+window.startCommentEdit = function(issueId, idx, boardKey){
+  commentEditingKey = `${issueId}__${idx}`;
+  renderIssueList(boardKey);
+  setTimeout(() => { const el = document.getElementById(`comment-edit-input-${issueId}-${idx}`); if (el) { el.focus(); el.select(); } }, 50);
+};
+window.cancelCommentEdit = function(boardKey){ commentEditingKey = null; renderIssueList(boardKey); };
+window.saveCommentEdit = async function(issueId, idx, boardKey){
+  const input = document.getElementById(`comment-edit-input-${issueId}-${idx}`);
+  const newText = input?.value.trim();
+  if (!newText) { alert('댓글 내용을 입력해주세요.'); return; }
+  const issue = allIssues.find(it => it.id === issueId);
+  if (!issue) return;
+  const comments = [...(issue.comments || [])];
+  comments[idx] = { ...comments[idx], text: newText, editedAt: Date.now() };
+  try { await updateDoc(doc(db, 'issues', issueId), { comments }); commentEditingKey = null; }
+  catch(err) { alert('댓글 수정 실패: ' + err.message); }
+};
+
+// ═══ 댓글 삭제 ═══
+window.deleteComment = async function(issueId, idx, boardKey){
+  if (!confirm('이 댓글을 삭제할까요?')) return;
+  const issue = allIssues.find(it => it.id === issueId);
+  if (!issue) return;
+  const comments = [...(issue.comments || [])];
+  comments.splice(idx, 1);
+  try { await updateDoc(doc(db, 'issues', issueId), { comments }); }
+  catch(err) { alert('댓글 삭제 실패: ' + err.message); }
 };
 
 function escapeHtml(str){
