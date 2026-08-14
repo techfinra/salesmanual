@@ -2726,7 +2726,7 @@ body {
     <div id="copetition-kcb" class="page-section">
       <div class="sec-header" style="display:flex;flex-direction:column;align-items:flex-start;gap:10px">
         <button onclick="tfSummaryOpen('kcb-summary-tpl')" style="display:flex;align-items:center;gap:6px;background:var(--navy);color:#fff;border:none;padding:9px 16px;border-radius:20px;font-size:12.5px;font-weight:700;cursor:pointer;white-space:nowrap">
-          📌 AI 핵심정리 <span style="opacity:0.7;font-weight:400;font-size:11px">(2026.8.10 업데이트)</span>
+          📌 AI 핵심정리 <span style="opacity:0.7;font-weight:400;font-size:11px">(2026.8.14 업데이트)</span>
         </button>
         <div>
           <h1>KCB 실무협의체</h1>
@@ -2736,27 +2736,35 @@ body {
 
       <!-- 핵심정리 템플릿 (숨김, 버튼 클릭 시 모달로 표시) -->
       <div id="kcb-summary-tpl" style="display:none">
-        <div style="font-size:11px;color:var(--gray);margin-bottom:14px">2026.8.10 기준 · KCB 실무협의체 진행 현황 한눈에 보기</div>
+        <div style="font-size:11px;color:var(--gray);margin-bottom:14px">2026.8.14 기준 · KCB 실무협의체 진행 현황 한눈에 보기</div>
         <div style="display:flex;flex-direction:column;gap:10px">
-          <div style="border:1px solid var(--line);border-radius:8px;padding:12px 14px">
-            <div style="font-size:11px;font-weight:700;color:var(--navy);margin-bottom:6px">🤝 관계·일정</div>
-            <div style="font-size:12.5px;color:#333;line-height:1.7">MOU 체결(6월) → 1차 실무협의체(7/22)·신규사업 Ideation 미팅(8/5) 완료 → <b>8/14 기업신용정보 업무제휴 계약서 초안 KCB 전달 완료</b> → 8/26(수) 16시 정기 실무협의체 예정</div>
+          <div style="border:1.5px solid #86EFAC;border-radius:8px;padding:12px 14px;background:#F0FDF4">
+            <div style="font-size:11px;font-weight:700;color:#16A34A;margin-bottom:6px">✅ 완료</div>
+            <div style="font-size:12.5px;color:#333;line-height:1.8">
+              MOU 체결(6월) · 1차 실무협의체(7/22) · 신규사업 Ideation 미팅(8/5)<br>
+              IT 담당자 연락처 + CPS API 인터페이스 정의서 KCB 전달(8/10)<br>
+              <b>「기업신용정보 업무제휴 계약서」 초안 KCB 전달(8/14)</b> — 임철기 부장 수신, ver1.0
+            </div>
+          </div>
+          <div style="border:1.5px solid #FCD34D;border-radius:8px;padding:12px 14px;background:#FFFBEB">
+            <div style="font-size:11px;font-weight:700;color:#92400E;margin-bottom:6px">🔄 진행 중</div>
+            <div style="font-size:12.5px;color:#333;line-height:1.8">
+              SCB 매출정보 연동 방안2(월Batch) — KCB IT팀 검토 대기 중<br>
+              계약서 초안 KCB 측 검토 및 의견 회신 대기 중<br>
+              사기거래탐지 현금거래분석(상호대사·현금거래 네트워크) — 8월 오픈 예정
+            </div>
+          </div>
+          <div style="border:1.5px solid #93C5FD;border-radius:8px;padding:12px 14px;background:#EFF6FF">
+            <div style="font-size:11px;font-weight:700;color:#1D4ED8;margin-bottom:6px">📅 예정</div>
+            <div style="font-size:12.5px;color:#333;line-height:1.8">
+              <b>8/26(수) 16시</b> — 정기 실무협의체 (더존을지타워 11층 데카콘)<br>
+              &nbsp;&nbsp;표준가격·수수료·제휴계약 본격 협의, 계약서 초안 KCB 의견 반영<br>
+              공동개발 7개 주제 착수 시점 협의 — 단기: 주제2(조기경보)·주제6(사기탐지고도화)
+            </div>
           </div>
           <div style="border:1px solid var(--line);border-radius:8px;padding:12px 14px">
-            <div style="font-size:11px;font-weight:700;color:var(--navy);margin-bottom:6px">💡 공동개발 Ideation (7개 주제)</div>
-            <div style="font-size:12.5px;color:#333;line-height:1.7">전 주제 원본 자료·검증데이터 반영 완료. 우선순위: <b>단기</b>(주제2 조기경보·주제6 사기탐지) → <b>중기</b>(주제1 상거래정보·주제5 개인사업자모형) → <b>중장기</b>(주제3 신설기업·주제4 현금흐름·주제7 기타)</div>
-          </div>
-          <div style="border:1px solid var(--line);border-radius:8px;padding:12px 14px">
-            <div style="font-size:11px;font-weight:700;color:var(--navy);margin-bottom:6px">⚙️ SCB 매출정보 연동</div>
-            <div style="font-size:12.5px;color:#333;line-height:1.7">기술스펙 방안2(월Batch 요청/제공) 제안, KCB 원본 흐름도·데이터제공안 확보·반영. IT 담당자(왕희준·안도영) 연락처 및 CPS API 인터페이스 정의서 KCB 전달 완료(8/10)</div>
-          </div>
-          <div style="border:1px solid var(--line);border-radius:8px;padding:12px 14px">
-            <div style="font-size:11px;font-weight:700;color:var(--navy);margin-bottom:6px">🛡️ 사기거래탐지 서비스</div>
-            <div style="font-size:12.5px;color:#333;line-height:1.7">5단계 구조(체크리스트→세금계산서 네트워크→상호대사→현금거래 네트워크→종합진단) 및 실서비스 화면 자료 반영. 현금거래분석은 8월 오픈 예정</div>
-          </div>
-          <div style="border:1.5px solid #FCA5A5;border-radius:8px;padding:12px 14px;background:#FEF2F2">
-            <div style="font-size:11px;font-weight:700;color:#DC2626;margin-bottom:6px">📌 정책 동향 (금융위 7/27 발표)</div>
-            <div style="font-size:12.5px;color:#333;line-height:1.7">SCB 시범은행 7→16개·2.2조원 확대(8월말~), 개인사업자 전용 사잇돌대출 연계('26.10월), SCB 운영 가이드라인 8월 제정 — 당사 KCB 매출정보 채널이 이 정책 확산 구조에 직결</div>
+            <div style="font-size:11px;font-weight:700;color:#DC2626;margin-bottom:6px">📌 정책 동향 (금융위 7/27)</div>
+            <div style="font-size:12.5px;color:#333;line-height:1.7">SCB 시범은행 7→16개·2.2조원 확대(8월말~) — 당사 KCB 매출정보 공급 채널과 직결. 8월 말 SCB 운영 가이드라인 제정 예정</div>
           </div>
         </div>
       </div>
@@ -3959,7 +3967,7 @@ body {
     <div id="copetition-nice" class="page-section">
       <div class="sec-header" style="display:flex;flex-direction:column;align-items:flex-start;gap:10px">
         <button onclick="tfSummaryOpen('nice-summary-tpl')" style="display:flex;align-items:center;gap:6px;background:var(--navy);color:#fff;border:none;padding:9px 16px;border-radius:20px;font-size:12.5px;font-weight:700;cursor:pointer;white-space:nowrap">
-          📌 AI 핵심정리 <span style="opacity:0.7;font-weight:400;font-size:11px">(2026.8.10 업데이트)</span>
+          📌 AI 핵심정리 <span style="opacity:0.7;font-weight:400;font-size:11px">(2026.8.14 업데이트)</span>
         </button>
         <div>
           <h1>NICE평가정보 실무협의체</h1>
@@ -3969,27 +3977,39 @@ body {
 
       <!-- 핵심정리 템플릿 (숨김, 버튼 클릭 시 모달로 표시) -->
       <div id="nice-summary-tpl" style="display:none">
-        <div style="font-size:11px;color:var(--gray);margin-bottom:14px">2026.8.10 기준 · NICE 실무협의체 진행 현황 한눈에 보기</div>
+        <div style="font-size:11px;color:var(--gray);margin-bottom:14px">2026.8.14 기준 · NICE 실무협의체 진행 현황 한눈에 보기</div>
         <div style="display:flex;flex-direction:column;gap:10px">
-          <div style="border:1px solid var(--line);border-radius:8px;padding:12px 14px">
-            <div style="font-size:11px;font-weight:700;color:var(--navy);margin-bottom:6px">🤝 관계·일정</div>
-            <div style="font-size:12.5px;color:#333;line-height:1.7">MOU 체결(6/15) → 2차 실무협의체(7/23) → 신규서비스분과 사전협의(8/10) 완료 → 워크숍 의제·설명자료 발송 완료(8/14) ✅ → <b>코피티션 워크숍(8/19) D-5</b>, 결과는 양사 대표 보고</div>
+          <div style="border:1.5px solid #86EFAC;border-radius:8px;padding:12px 14px;background:#F0FDF4">
+            <div style="font-size:11px;font-weight:700;color:#16A34A;margin-bottom:6px">✅ 완료</div>
+            <div style="font-size:12.5px;color:#333;line-height:1.8">
+              MOU 체결(6/15) · 2차 실무협의체(7/23) · 신규서비스분과 사전협의(8/10)<br>
+              8/10 회의록: 7대 아이디어 논의, NICE 최선호 = D-Pay Index+GNN 결합(AR 60↑)<br>
+              <b>워크숍 의제 구성 확정 + 테크핀 설명자료(v0.1) 발송(8/14)</b>
+            </div>
+          </div>
+          <div style="border:1.5px solid #FCD34D;border-radius:8px;padding:12px 14px;background:#FFFBEB">
+            <div style="font-size:11px;font-weight:700;color:#92400E;margin-bottom:6px">🔄 진행 중</div>
+            <div style="font-size:12.5px;color:#333;line-height:1.8">
+              NICE 측 — 보유 스코어 라인업 공유 대기 중 (워크숍 전)<br>
+              NH농협카드 커버리지 이슈 → 신규 동의 확보 방안 검토 중<br>
+              성장 vs 리스크 우선순위 워크숍에서 논의 예정 (D-Pay Index 계열 우선 가닥)
+            </div>
+          </div>
+          <div style="border:1.5px solid #FCA5A5;border-radius:8px;padding:12px 14px;background:#FEF2F2">
+            <div style="font-size:11px;font-weight:700;color:#DC2626;margin-bottom:6px">📅 D-5 임박</div>
+            <div style="font-size:12.5px;color:#333;line-height:1.8">
+              <b>8/19(수) — 제3차 실무협의체 + 코피티션 워크숍</b><br>
+              세션1: NICE 컨설팅 프로세스·테크핀 데이터 항목·전송방식 세부설명<br>
+              세션2: 하반기 추진 Agenda 세부논의 → 결과는 양사 대표 보고
+            </div>
           </div>
           <div style="border:1px solid var(--line);border-radius:8px;padding:12px 14px">
-            <div style="font-size:11px;font-weight:700;color:var(--navy);margin-bottom:6px">💡 신규 서비스 7대 아이디어</div>
-            <div style="font-size:12.5px;color:#333;line-height:1.7">테크핀 제안, NICE는 <b>①D-Pay Index+GNN 결합(상거래정보서비스)</b>을 가장 매력적으로 평가(AR 60↑ 검증) — 부도 타겟 명확한 리스크 스코어 계열 우선 지지. ⑦성장성모형은 '성장의 정의' 합의 부재로 중기 과제로 분류</div>
-          </div>
-          <div style="border:1px solid var(--line);border-radius:8px;padding:12px 14px">
-            <div style="font-size:11px;font-weight:700;color:var(--navy);margin-bottom:6px">⚖️ 주요 쟁점</div>
-            <div style="font-size:12.5px;color:#333;line-height:1.7">① 성장 vs 리스크 우선순위 논의 중 ② 월별 추정재무는 복식부기 법인(~40만건)만 가능, 간편장부 개인사업자는 제한적 ③ 데이터 커버리지 50~60% 수준, NH농협카드는 커버리지 이슈로 진행 지연 중</div>
-          </div>
-          <div style="border:1px solid var(--line);border-radius:8px;padding:12px 14px">
-            <div style="font-size:11px;font-weight:700;color:var(--navy);margin-bottom:6px">🛡️ 사기거래탐지 서비스</div>
-            <div style="font-size:12.5px;color:#333;line-height:1.7">5단계 구조(체크리스트→세금계산서 네트워크→상호대사→현금거래 네트워크→종합진단) 및 실서비스 화면 자료 반영. 현금거래분석은 8월 오픈 예정</div>
-          </div>
-          <div style="border:1.5px solid #93C5FD;border-radius:8px;padding:12px 14px;background:#EFF6FF">
-            <div style="font-size:11px;font-weight:700;color:#1D4ED8;margin-bottom:6px">✅ 다음 액션</div>
-            <div style="font-size:12.5px;color:#333;line-height:1.7">테크핀 설명자료 + 의제 발송 완료(8/14) ✅ · NICE → 워크숍 전 보유 스코어 라인업 공유 대기 중 · 연말 내 신규서비스 방향 1개 이상 확정 목표</div>
+            <div style="font-size:11px;font-weight:700;color:var(--navy);margin-bottom:6px">🎯 핵심 논의 아이디어</div>
+            <div style="font-size:12.5px;color:#333;line-height:1.8">
+              <b>①D-Pay Index+GNN</b> — 매출채권 회수기간·매입채무 지급기간 월별 추적, 타 신평사 미보유 독점 지표<br>
+              <b>②EWS 기장데이터 특화</b> — 결산 공백기 선행 이상신호 포착<br>
+              <b>③신설기업 모형</b>(개발완료 AR 59.9%) · <b>④현금흐름 특화</b> · <b>⑤개인사업자 모형</b>
+            </div>
           </div>
         </div>
       </div>
