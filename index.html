@@ -2768,14 +2768,14 @@ body {
             <div style="font-size:12.5px;color:#333;line-height:1.8">
               MOU 체결(6월) · 1차 실무협의체(7/22) · 신규사업 Ideation 미팅(8/5)<br>
               IT 담당자 연락처 + CPS API 인터페이스 정의서 KCB 전달(8/10)<br>
-              <b>「기업신용정보 업무제휴 계약서」 초안 KCB 전달(8/14)</b> — 임철기 부장 수신, ver1.0
+              <b>「기업신용정보 업무제휴 계약서」 KCB 전달(8/14 ver1.0 → 8/24 ver1.1)</b><br><span style="font-size:11px;color:#444">KCB 의견(제13조 제4항 삭제 요청) → 13조 4항 간명하게 수정(동의기반 확인 표현 유지)하여 ver1.1 재발송 완료</span>
             </div>
           </div>
           <div style="border:1.5px solid #FCD34D;border-radius:8px;padding:12px 14px;background:#FFFBEB">
             <div style="font-size:11px;font-weight:700;color:#92400E;margin-bottom:6px">🔄 진행 중</div>
             <div style="font-size:12.5px;color:#333;line-height:1.8">
               SCB 매출정보 연동 방안2(월Batch) — KCB IT팀 검토 대기 중<br>
-              계약서 초안 KCB 측 검토 및 의견 회신 대기 중<br>
+              계약서 KCB 의견 회신 완료 (8/24 임철기 부장) → ver1.1 수정·재발송<br>
               사기거래탐지 현금거래분석(상호대사·현금거래 네트워크) — 8월 오픈 예정
             </div>
           </div>
@@ -3006,8 +3006,21 @@ body {
               </div>
             </div>
             <div style="display:flex;gap:10px;align-items:flex-start">
+              <div style="min-width:80px;padding:4px 8px;background:#DCFCE7;color:#166534;font-size:10.5px;font-weight:700;border-radius:4px;text-align:center">8/24 (일)<br>✓ 완료</div>
+              <div style="font-size:12.5px;color:#333;line-height:1.6;flex:1">
+                계약서 KCB 의견 회신 (임철기 부장) → ver1.1 수정 발송<br>
+                <div style="background:#fff;border:1px solid #DDE3EF;border-radius:8px;padding:10px 12px;margin-top:8px;font-size:11.5px;line-height:1.75">
+                  <b>📌 KCB 요청</b>: 제13조 제4항 삭제 (이 외 이견 없음)<br>
+                  <b>✅ 수정 내용</b>: 삭제 대신 간명하게 수정 (안승찬 본부장 검토)<br>
+                  <span style="color:#374151;font-style:italic;padding:5px 8px;border-left:2px solid #C8A84B;display:block;margin:5px 0;font-size:11px">④ "테크핀"과 "KCB"는 사업자등록번호 등 식별번호를 기준으로 상대방에 대하여 "제공정보"의 제공을 요청하며, 제공을 요청하는 당사자는 신용정보의 수집·이용·제공 및 조회에 관한 동의 등 기업정보에 대한 처리근거를 확인한 것으로 본다.</span>
+                  → 동의기반 확인 표현 유지 (법적 근거 보존)<br>
+                  <a href="assets/files/kcb-contract-ver1.1.docx" download style="display:inline-flex;align-items:center;gap:5px;margin-top:6px;color:#2563EB;text-decoration:underline;font-weight:700;font-size:12px">📄 계약서 ver1.1 다운로드</a>
+                </div>
+              </div>
+            </div>
+            <div style="display:flex;gap:10px;align-items:flex-start">
               <div style="min-width:80px;padding:4px 8px;background:#DBEAFE;color:#1E3A8A;font-size:10.5px;font-weight:700;border-radius:4px;text-align:center">8/26 (수)<br>16:00</div>
-              <div style="font-size:12.5px;color:#333;line-height:1.5">정기 실무협의체<br><span style="font-size:11px;color:var(--gray)">표준가격 · 수수료 · 제휴계약 논의</span></div>
+              <div style="font-size:12.5px;color:#333;line-height:1.5">정기 실무협의체<br><span style="font-size:11px;color:var(--gray)">계약서 ver1.1 최종 조율 · SCB 연동 일정 · 공동개발 방향</span></div>
             </div>
           </div>
         </div>
@@ -7157,7 +7170,7 @@ const SECURITY_CODE = "techfin2026"; // 회원가입 시 필요한 회사 보안
    이 버전보다 "이전" 버전 기준으로 저장된 Firestore 수정본은
    자동으로 무시되고, 방금 배포한 최신 정적 내용이 우선 표시됩니다.
    ──────────────────────────────────────────── */
-const MANUAL_BUILD_VERSION = "2026-08-24T14:00:00+09:00";
+const MANUAL_BUILD_VERSION = "2026-08-25T09:00:00+09:00";
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
