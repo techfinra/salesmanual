@@ -2756,7 +2756,7 @@ body {
 
       <!-- 핵심정리 템플릿 (숨김, 버튼 클릭 시 모달로 표시) -->
       <div id="kcb-summary-tpl" style="display:block;margin-bottom:24px">
-        <div style="font-size:11px;color:var(--gray);margin-bottom:14px">2026.8.27 기준 · KCB 실무협의체 진행 현황 한눈에 보기</div>
+        <div style="font-size:11px;color:var(--gray);margin-bottom:14px">2026.9.3 기준 · KCB 실무협의체 진행 현황 한눈에 보기</div>
         <div style="display:flex;flex-direction:column;gap:10px">
           <div style="border:1.5px solid #86EFAC;border-radius:8px;padding:12px 14px;background:#F0FDF4">
             <div style="font-size:11px;font-weight:700;color:#16A34A;margin-bottom:6px">✅ 완료</div>
@@ -2764,7 +2764,8 @@ body {
               MOU 체결(6월) · 1차 실무협의체(7/22) · 신규사업 Ideation 미팅(8/5)<br>
               IT 담당자 연락처 + CPS API 인터페이스 정의서 KCB 전달(8/10)<br>
               「기업신용정보 업무제휴 계약서」 KCB 전달(8/14 ver1.0 → 8/24 ver1.1)<br>
-              <b>정기 실무협의체(8/26) 완료</b> — 통합 기업연결망 스코어(2번안) 우선 추진 합의, 데이터구매 계약 핵심쟁점 3가지(동의여부·공급안정성·개인사업자 우선권) 확인
+              <b>정기 실무협의체(8/26) 완료</b> — 통합 기업연결망 스코어(2번안) 우선 추진 합의, 데이터구매 계약 핵심쟁점 3가지(동의여부·공급안정성·개인사업자 우선권) 확인<br>
+              KCB → 당사 「서비스 대상자 배치전문(BZ05)」 자료 개발팀 전달 및 1차 검토 회신(9/3)
             </div>
           </div>
           <div style="border:1.5px solid #FCD34D;border-radius:8px;padding:12px 14px;background:#FFFBEB">
@@ -2772,7 +2773,8 @@ body {
             <div style="font-size:12.5px;color:#333;line-height:1.8">
               SCB 매출정보 연동 방안2(월Batch) — KCB IT팀 검토 대기 중<br>
               KCB → 데이터구매 계약서 초안 작성 중 (동의문구·공급안정성·우선권 조항 반영, 9월 1주 목표)<br>
-              사기거래탐지 현금거래분석(상호대사·현금거래 네트워크) — 8월 오픈 예정
+              사기거래탐지 현금거래분석(상호대사·현금거래 네트워크) — 8월 오픈 예정<br>
+              <b>KB카드 서비스 대상자 배치전문 개발 — 방향 변경(9/3)</b>: 당사→KCB 등록전문(부가세·프로파일) 개발 중단, <b>KCB→당사 대상자 전문 수신 + 당사→KCB 재무정보 배치 회신</b>으로 전환, 기존 RAW DATA 레이아웃 재활용 검토 중
             </div>
           </div>
           <div style="border:1.5px solid #93C5FD;border-radius:8px;padding:12px 14px;background:#EFF6FF">
@@ -4072,6 +4074,97 @@ body {
         <div class="callout" style="font-size:12px;margin-top:16px">
           📌 이번 회의는 이전 KCB 기획안(<b>결합 가능 3개 과제, STEP1 Late Fusion 채택</b>)에서 논의된 방향과 정합적으로 진행됨 — 2번안(통합 기업연결망 스코어)이 최종적으로 우선순위 1순위·즉시 착수로 재확인됨
         </div>
+      </div>
+
+      <!-- ══════════ KB카드 등록전문 개발 진행 (9월) ══════════ -->
+      <div id="kcb-toc-batch-spec" style="margin-top:36px;padding-top:24px;border-top:2px dashed var(--line)">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
+          <span style="background:#FCD34D;color:#92400E;padding:3px 10px;border-radius:12px;font-size:10.5px;font-weight:700">🔄 진행 중 · 방향 변경</span>
+          <h2 style="font-size:16px;font-weight:800;color:var(--navy);margin:0">KB카드 서비스 대상자 배치전문 개발 — 방향 변경 (9/3)</h2>
+        </div>
+        <p style="font-size:12.5px;color:var(--gray);margin-bottom:16px">2026.09.03 · 육태우 과장 ↔ 개발팀(안도영 책임·왕희준 책임) 메일 스레드 요약</p>
+
+        <div class="callout gold" style="margin-bottom:16px">
+          <b>💡 핵심 변경사항</b><br>
+          KCB 요청으로 <b>등록전문 방향이 전면 변경</b>됨 — 기존에 개발 검토 중이던 ①부가세정보 등록전문, ②프로파일 등록전문(테크핀→KCB 제공 방향)은 <b>중단</b>. 대신 <b>KCB → 당사로 KB카드 서비스 대상자 명단을 월 1회 배치 전달</b>하면, 당사가 해당 대상자 기준으로 데이터를 추출해 <b>당사 → KCB로 재무정보 배치 회신</b>하는 방식으로 변경.
+        </div>
+
+        <div class="di-h2">🔀 진행 방향 변경 흐름</div>
+        <table class="tf-table" style="margin-bottom:20px">
+          <thead><tr><th style="width:16%">구분</th><th style="width:42%">기존 검토안 (중단)</th><th>변경된 방향 (진행)</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><b>데이터 흐름</b></td>
+              <td>당사 → KCB 제공<br>①부가세정보 등록전문<br>②프로파일(요약)정보 등록전문</td>
+              <td><b>KCB → 당사</b>: KB카드 서비스 대상자 전문(BZ05) 수신<br><b>당사 → KCB</b>: 대상자 기준 재무정보 RAW DATA 배치 회신</td>
+            </tr>
+            <tr>
+              <td><b>레이아웃</b></td>
+              <td>KCB 관리 전문 포맷(헤더/베이스/트레일러)에 맞춰 신규 개발, 프로파일 항목 9바이트 통일</td>
+              <td>가능하면 <b>기존 당사 재무정보 RAW DATA 레이아웃을 그대로 활용</b> — KCB도 신규 전문 별도 개발보다 재사용 선호</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="di-h2">📄 KCB → 당사 「서비스 대상자 배치전문」 규격 (BZ05, v0.8)</div>
+        <div style="border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin-bottom:16px;font-size:12.5px;color:#333;line-height:1.85">
+          전송코드 ASCII(한글은 KSC5601) · 전문 길이 공통부 포함 130~4096Byte · <b>Record당 500Byte 고정</b> · AN(Alphanumeric)은 좌측정렬+Blank채움, N(Numeric)은 우측정렬+0채움 · 금액단위 천원, 일자 YYYYMMDD
+        </div>
+        <div style="overflow-x:auto;margin-bottom:20px">
+          <table class="tf-table" style="min-width:640px">
+            <thead><tr><th>구분</th><th>순서</th><th>항목</th><th>속성</th><th>길이</th><th>누적</th></tr></thead>
+            <tbody>
+              <tr><td rowspan="6"><b>HEADER</b></td><td>1</td><td>Record 구분 ("H" 고정)</td><td>AN</td><td>1</td><td>1</td></tr>
+              <tr><td>2</td><td>일련번호 ("0000000000" 고정)</td><td>N</td><td>10</td><td>11</td></tr>
+              <tr><td>3</td><td>이용자번호 (KCB 부여 회원사 H/I ID)</td><td>AN</td><td>8</td><td>19</td></tr>
+              <tr><td>4</td><td>FILE 이름 ("BZ05"+이용자번호8+기준일자8)</td><td>AN</td><td>20</td><td>39</td></tr>
+              <tr><td>5</td><td>기준일자 (영업마감 기준)</td><td>AN</td><td>8</td><td>47</td></tr>
+              <tr><td>6</td><td>총건수</td><td>N</td><td>10</td><td>57</td></tr>
+              <tr><td rowspan="6"><b>대상자정보</b></td><td>1</td><td>Record 구분 ("D" 고정)</td><td>AN</td><td>1</td><td>1</td></tr>
+              <tr><td>2</td><td>일련번호</td><td>N</td><td>10</td><td>11</td></tr>
+              <tr><td>3</td><td>법인등록번호</td><td>AN</td><td>13</td><td>24</td></tr>
+              <tr><td>4</td><td>사업자등록번호</td><td>AN</td><td>10</td><td>34</td></tr>
+              <tr><td>5</td><td>상호명</td><td>AN</td><td>200</td><td>234</td></tr>
+              <tr><td>6</td><td>기준일자</td><td>AN</td><td>8</td><td>242</td></tr>
+              <tr><td rowspan="5"><b>TRAILER</b></td><td>1</td><td>Record 구분 ("T" 고정)</td><td>AN</td><td>1</td><td>1</td></tr>
+              <tr><td>2</td><td>일련번호 ("9999999999" 고정)</td><td>N</td><td>10</td><td>11</td></tr>
+              <tr><td>4</td><td>FILE 이름</td><td>AN</td><td>20</td><td>39</td></tr>
+              <tr><td>5</td><td>기준일자</td><td>AN</td><td>8</td><td>47</td></tr>
+              <tr><td>6</td><td>총건수</td><td>N</td><td>10</td><td>57</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout" style="font-size:12px;margin-bottom:20px">
+          📌 대상자정보 핵심 식별키는 <b>법인등록번호·사업자등록번호·상호명</b> 3종 — 당사는 이 키를 기준으로 재무정보를 매칭·추출하여 회신
+        </div>
+
+        <div class="di-h2">📧 메일 스레드 타임라인</div>
+        <div class="tl" style="margin-bottom:8px">
+          <div class="tl-item" style="position:relative;padding-bottom:16px">
+            <div style="font-size:11px;font-weight:700;color:var(--gray)">9/3 (수) 09:46 · 육태우 → 안도영·왕희준 책임</div>
+            <div style="font-size:12.5px;color:#333;margin-top:2px">「등록전문 개발일정 확인 요청」— ①부가세정보 ②프로파일정보 등록전문 개발 대략 일정 문의</div>
+          </div>
+          <div class="tl-item" style="position:relative;padding-bottom:16px">
+            <div style="font-size:11px;font-weight:700;color:var(--gray)">9/3 (수) 오전 · 육태우 → 안도영·왕희준 책임</div>
+            <div style="font-size:12.5px;color:#333;margin-top:2px"><b>「등록전문 검토 회신의 건」</b> — KCB 요건 변경 통보: 기존 ①②안 개발·검토 중단, KCB→당사 대상자 전문 수신 + 당사→KCB 재무정보 배치 회신 방식으로 전환 안내. 기존 재무정보 RAW DATA 레이아웃 활용 가능성 우선 검토 요청</div>
+          </div>
+          <div class="tl-item" style="position:relative">
+            <div style="font-size:11px;font-weight:700;color:var(--gray)">9/3 (수) 11:33 · 왕희준 책임 → 육태우</div>
+            <div style="font-size:12.5px;color:#333;margin-top:2px">전달받은 BZ05 전문 자료 검토 — 확인사항 doc 메모로 회신, 전문 개발·일정은 내부 회의 후 추후 공유 예정</div>
+          </div>
+        </div>
+
+        <div class="di-h2" style="margin-top:20px">✅ 액션 아이템</div>
+        <table class="tf-table">
+          <thead><tr><th>No</th><th>액션 아이템</th><th>담당</th><th>상태</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>KCB → 당사 「서비스 대상자 배치전문(BZ05)」 자료 개발팀 전달 및 검토 요청</td><td>육태우 과장</td><td><span style="background:#DCFCE7;color:#16A34A;font-size:10px;padding:1px 6px;border-radius:4px;font-weight:700">완료 (9/3)</span></td></tr>
+            <tr><td>2</td><td>당사 기존 재무정보 RAW DATA 레이아웃 재활용 가능 여부 검토</td><td>안도영 책임 / 왕희준 책임</td><td><span style="background:#FEF9C3;color:#92400E;font-size:10px;padding:1px 6px;border-radius:4px;font-weight:700">검토 중</span></td></tr>
+            <tr><td>3</td><td>수급 자료 확인사항 정리(doc 메모) 회신</td><td>왕희준 책임</td><td><span style="background:#DCFCE7;color:#16A34A;font-size:10px;padding:1px 6px;border-radius:4px;font-weight:700">완료 (9/3)</span></td></tr>
+            <tr><td>4</td><td>전문 개발 방식 및 일정 내부회의 후 공유</td><td>안도영 책임 / 왕희준 책임</td><td><span style="background:#FEF9C3;color:#92400E;font-size:10px;padding:1px 6px;border-radius:4px;font-weight:700">대기 중</span></td></tr>
+            <tr><td>5</td><td>당사 → KCB 재무정보 배치 회신 전문 개발 일정 KCB와 협의</td><td>육태우 과장</td><td><span style="background:#F3F4F6;color:#6B7280;font-size:10px;padding:1px 6px;border-radius:4px;font-weight:700">내부 일정 확정 후</span></td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
 
