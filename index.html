@@ -2765,7 +2765,8 @@ body {
               IT 담당자 연락처 + CPS API 인터페이스 정의서 KCB 전달(8/10)<br>
               「기업신용정보 업무제휴 계약서」 KCB 전달(8/14 ver1.0 → 8/24 ver1.1 → <b>ver1.2 제13조④ 동의근거 개정 내부검토</b>)<br>
               <b>정기 실무협의체(8/26) 완료</b> — 통합 기업연결망 스코어(2번안) 우선 추진 합의, 데이터구매 계약 핵심쟁점 3가지(동의여부·공급안정성·개인사업자 우선권) 확인<br>
-              KCB → 당사 「서비스 대상자 배치전문(BZ05)」 자료 개발팀 전달 및 1차 검토 회신(9/3)
+              KCB → 당사 「서비스 대상자 배치전문(BZ05)」 자료 개발팀 전달 및 1차 검토 회신(9/3)<br>
+              프로파일 등록전문(BY11) — CPS 제공 확정, K-Format 규격 확인
             </div>
           </div>
           <div style="border:1.5px solid #FCD34D;border-radius:8px;padding:12px 14px;background:#FFFBEB">
@@ -4310,6 +4311,93 @@ body {
             <tr><td>3</td><td>수급 자료 확인사항 정리(doc 메모) 회신</td><td>왕희준 책임</td><td><span style="background:#DCFCE7;color:#16A34A;font-size:10px;padding:1px 6px;border-radius:4px;font-weight:700">완료 (9/3)</span></td></tr>
             <tr><td>4</td><td>전문 개발 방식 및 일정 내부회의 후 공유</td><td>안도영 책임 / 왕희준 책임</td><td><span style="background:#FEF9C3;color:#92400E;font-size:10px;padding:1px 6px;border-radius:4px;font-weight:700">대기 중</span></td></tr>
             <tr><td>5</td><td>당사 → KCB 재무정보 배치 회신 전문 개발 일정 KCB와 협의</td><td>육태우 과장</td><td><span style="background:#F3F4F6;color:#6B7280;font-size:10px;padding:1px 6px;border-radius:4px;font-weight:700">내부 일정 확정 후</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ══════════ KCB 프로파일 등록전문(BY11) — CPS 확정 및 K-Format 표준화 ══════════ -->
+      <div id="kcb-toc-by11-profile" style="margin-top:36px;padding-top:24px;border-top:2px dashed var(--line)">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
+          <span style="background:#16A34A;color:#fff;padding:3px 10px;border-radius:12px;font-size:10.5px;font-weight:700">✓ 방식 확정</span>
+          <h2 style="font-size:16px;font-weight:800;color:var(--navy);margin:0">KCB 프로파일 등록전문(BY11) — CPS 제공 확정 및 K-Format 표준화</h2>
+        </div>
+        <p style="font-size:12.5px;color:var(--gray);margin-bottom:16px">육태우 과장 → 안도영·왕희준 책임 · 「KCB 프로파일 등록전문 회신 및 전문 표준화 검토 요청」 · BZ05(대상자전문)와는 별개의 기업정보 제휴 데이터상품 전문 트랙</p>
+
+        <div class="callout gold" style="margin-bottom:20px">
+          <b>💡 핵심 요약</b><br>
+          지난 미팅 논의대로 <b>프로파일 정보는 CPS 형태로 제공하는 것으로 확정</b>. KCB가 자사 레거시 포맷인 <b>K-Format(BY11)</b>의 배경을 설명 — 헤더/트레일러 일부 인증항목은 의미 없고, 프로파일 항목은 <b>가변형</b>이라 실제 속성(AN/N)은 <b>프로파일 코드별로 개별 합의</b> 필요. 이를 계기로 육태우 과장이 <b>당사 데이터상품 전문의 사내 표준화</b>를 제안함
+        </div>
+
+        <div class="di-h2">📄 KCB 회신 — K-Format(BY11) 배경 설명</div>
+        <div style="border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin-bottom:20px;font-size:12.5px;color:#333;line-height:1.85">
+          · K-Format은 <b>KCB 설립초기부터 사용한 포맷</b> — 헤더/트레일러 내 일부 인증항목은 현재 크게 의미 없음<br>
+          · 프로파일 항목은 <b>향후 추가·변경이 수시로 발생</b>할 수 있어 <b>가변형(반복 구조)</b>으로 전문 구성<br>
+          · 프로파일값 자체는 스펙상 <b>AN(Alphanumeric) 속성</b>으로 지정되어 있으나, 실제 제공 프로파일 코드별 속성(AN/N)은 <b>별도 합의 필요</b><br>
+          · <b>프로파일 리스트 확정 시</b>, KCB로 제공할 프로파일 항목과 개별 속성(AN/N)을 정리해 전달 필요
+        </div>
+
+        <div class="di-h2">📐 Profile 등록전문(BY11) 규격 v0.1</div>
+        <div style="border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin-bottom:16px;font-size:12.5px;color:#333;line-height:1.85">
+          전송코드 ASCII(한글은 KSC5601) · 통상전문 길이 공통부 포함 130~4096Byte · AN은 좌측정렬+Blank채움, N은 우측정렬+0채움 · 금액단위 천원, 일자 YYYYMMDD, 시각 HHMMSSSSSS · <b>예외</b>: 오류 시 코드(E/C/W/R)를 AN으로 제공, 3개 이상 기관 조건부 항목은 미충족 시 공란 처리
+        </div>
+        <div style="overflow-x:auto;margin-bottom:16px">
+          <table class="tf-table" style="min-width:640px">
+            <thead><tr><th>구분</th><th>순서</th><th>항목</th><th>속성</th><th>길이</th><th>누적</th></tr></thead>
+            <tbody>
+              <tr><td rowspan="7"><b>HEADER</b></td><td>1</td><td>Record 구분 ("H" 고정)</td><td>AN</td><td>1</td><td>1</td></tr>
+              <tr><td>2</td><td>일련번호 ("0000000000" 고정)</td><td>N</td><td>10</td><td>11</td></tr>
+              <tr><td>3</td><td>회원사코드 (KCB 부여 H/I 이용자ID 앞6자리+"00")</td><td>AN</td><td>8</td><td>19</td></tr>
+              <tr><td>4</td><td>FILE 이름 ("BY11"+이용자번호8+기준일자8)</td><td>AN</td><td>20</td><td>39</td></tr>
+              <tr><td>5</td><td>기준일자 (영업마감 기준)</td><td>AN</td><td>8</td><td>47</td></tr>
+              <tr><td>6</td><td>총건수 (HEADER·TRAILER 미포함)</td><td>N</td><td>10</td><td>57</td></tr>
+              <tr><td>7</td><td>FILLER</td><td>AN</td><td>가변</td><td>가변</td></tr>
+              <tr><td rowspan="5"><b>Profile 리스트</b><br><span style="font-weight:400;color:var(--gray)">(BASE)</span></td><td>1</td><td>Record 구분 ("B" 고정)</td><td>AN</td><td>1</td><td>1</td></tr>
+              <tr><td>2</td><td>일련번호 ("0000000001" 고정)</td><td>N</td><td>10</td><td>11</td></tr>
+              <tr><td>3</td><td>Profile 요청건수 (반복 횟수 정의)</td><td>N</td><td>3</td><td>14</td></tr>
+              <tr><td>4</td><td>FILLER</td><td>AN</td><td>72</td><td>86</td></tr>
+              <tr><td>5</td><td><b>Profile 코드</b> (요청건수만큼 반복)</td><td>AN</td><td>9</td><td>반복</td></tr>
+              <tr><td rowspan="8"><b>Profile 정보</b><br><span style="font-weight:400;color:var(--gray)">(DATA)</span></td><td>1</td><td>Record 구분 ("D" 고정)</td><td>AN</td><td>1</td><td>1</td></tr>
+              <tr><td>2</td><td>일련번호</td><td>N</td><td>10</td><td>11</td></tr>
+              <tr><td>3</td><td>개인/법인구분코드</td><td>AN</td><td>1</td><td>12</td></tr>
+              <tr><td>4</td><td>법인등록번호</td><td>AN</td><td>13</td><td>25</td></tr>
+              <tr><td>5</td><td>사업자등록번호</td><td>AN</td><td>10</td><td>35</td></tr>
+              <tr><td>6</td><td>대표자주민번호</td><td>AN</td><td>13</td><td>48</td></tr>
+              <tr><td>7</td><td>성명</td><td>AN</td><td>30</td><td>78</td></tr>
+              <tr><td>8</td><td>기준일자</td><td>AN</td><td>8</td><td>86</td></tr>
+              <tr><td rowspan="1"></td><td>9</td><td><b>Profile 결과값</b> (요청건수만큼 반복)</td><td>AN</td><td>9</td><td>반복</td></tr>
+              <tr><td rowspan="8"><b>TRAILER</b></td><td>1</td><td>Record 구분 ("T" 고정)</td><td>AN</td><td>1</td><td>1</td></tr>
+              <tr><td>2</td><td>일련번호 ("9999999999" 고정)</td><td>N</td><td>10</td><td>11</td></tr>
+              <tr><td>3</td><td>회원사코드</td><td>AN</td><td>8</td><td>19</td></tr>
+              <tr><td>4</td><td>FILE 이름</td><td>AN</td><td>20</td><td>39</td></tr>
+              <tr><td>5</td><td>기준일자</td><td>AN</td><td>8</td><td>47</td></tr>
+              <tr><td>6</td><td>총건수</td><td>N</td><td>10</td><td>57</td></tr>
+              <tr><td>7</td><td>MAC검증 값</td><td>N</td><td>10</td><td>67</td></tr>
+              <tr><td>8</td><td>FILLER</td><td>AN</td><td>가변</td><td>가변</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout" style="font-size:12px;margin-bottom:20px">
+          📌 핵심 포인트: <b>개인/법인구분코드 + 법인등록번호/사업자등록번호/대표자주민번호/성명</b>이 매칭키이며, <b>Profile 코드·결과값이 요청건수만큼 반복되는 가변 구조</b> — 프로파일 항목이 늘어나도 헤더 구조 변경 없이 확장 가능
+        </div>
+        <a href="assets/files/kcb-by11-profile-spec-v0.1.docx" download style="display:inline-flex;align-items:center;gap:5px;margin-bottom:20px;color:#2563EB;text-decoration:underline;font-weight:700;font-size:12px">📄 프로파일 등록전문(BY11) 설계서 v0.1 다운로드</a>
+
+        <div class="di-h2">🗂️ 육태우 과장 제안 — 데이터상품 전문 표준화</div>
+        <div style="border:1.5px solid #93C5FD;border-radius:10px;padding:16px 18px;margin-bottom:16px;font-size:12.5px;color:#333;line-height:1.85">
+          현재는 <b>금융기관별 요청 발생 시마다</b> 전문 샘플을 받아 개별 협의·수정하는 방식 — KCB 사례를 계기로 상품별 <b>표준 전문설계서</b>를 미리 구축하면 향후 NICE·KCB 및 타 금융기관 연동 시 효율적 대응 가능하다는 제안:<br><br>
+          · <b>상품별 표준 전문</b> — 부가세 / 월재무제표 / CPS / 향후 신규 상품(AI-CFO, 퇴직연금 데이터셋, GNN 관련, 월재무제표 기반 CPS 등)<br>
+          · <b>상품별 항목 정의</b> — 실시간/배치 구분, 항목명, 코드, 데이터형(AN/N), 길이, 필수여부, 설명<br>
+          · <b>공통 전문 구조</b> — Header/Data/Trailer 등 기본 전송구조 및 요청일·배치일 표준화<br>
+          · <b>기관별 예외사항</b> — 기관 자체 포맷·별도 요건이 있는 경우에 한해서만 추가 대응<br><br>
+          → 매번 처음부터 만드는 방식 대신 <b>테크핀 표준 전문을 기본안으로 제공하고 기관별 예외만 수정</b>하는 방향 제안
+        </div>
+
+        <div class="di-h2" style="margin-top:20px">✅ 액션 아이템</div>
+        <table class="tf-table">
+          <thead><tr><th>No</th><th>액션 아이템</th><th>담당</th><th>상태</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>프로파일 정보 제공 방식 CPS로 확정</td><td>양사</td><td><span style="background:#DCFCE7;color:#16A34A;font-size:10px;padding:1px 6px;border-radius:4px;font-weight:700">완료</span></td></tr>
+            <tr><td>2</td><td>제공 프로파일 리스트 확정 → 프로파일별 개별 속성(AN/N) 정리해 KCB 전달</td><td>안도영 책임 / 왕희준 책임</td><td><span style="background:#FEF9C3;color:#92400E;font-size:10px;padding:1px 6px;border-radius:4px;font-weight:700">대기 중</span></td></tr>
+            <tr><td>3</td><td>당사 데이터상품(부가세·월재무제표·CPS 등) 전문 표준화 착수 여부 내부 검토</td><td>안도영 책임 / 왕희준 책임</td><td><span style="background:#FEF9C3;color:#92400E;font-size:10px;padding:1px 6px;border-radius:4px;font-weight:700">검토 요청</span></td></tr>
           </tbody>
         </table>
       </div>
